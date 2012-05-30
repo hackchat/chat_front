@@ -1,0 +1,20 @@
+<h1>Listing Messages</h1>
+
+<div id="messages">
+
+</div>
+
+<form id="new_message">
+
+  <label>
+    <span>Content</span>
+    <input
+      type="text" name="content"
+      value="<%= @content %>" required
+ autofocus>
+    <br />
+  </label>
+
+  <button>Create</button>
+
+</form>
