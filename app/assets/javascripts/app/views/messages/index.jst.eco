@@ -1,17 +1,12 @@
 <h1>Listing Messages</h1>
 
-<div id="messages">
-
-</div>
+<div id="messages"></div>
 
 <form id="new_message">
 
   <label>
     <span>Content</span>
-    <input
-      type="text" name="content"
-      value="<%= @content %>" required
- autofocus>
+    <input type="text" name="content" value="<%= @content %>" autofocus>
     <br />
   </label>
 

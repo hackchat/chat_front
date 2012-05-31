@@ -54,4 +54,4 @@ $ -> new FayeHandler
 
 addOne = (message) ->
   item = new App.MessageItem({ el: '', message })
-  $("#container").find('#messages').append(item.render())
+  $("#app").find('#messages').append(item.render())

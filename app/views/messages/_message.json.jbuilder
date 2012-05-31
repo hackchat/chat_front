@@ -1,1 +1,0 @@
-json.(message, :content, :created_at)
