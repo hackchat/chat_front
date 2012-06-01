@@ -1,10 +1,11 @@
 class Message < ActiveRecord::Base
-  attr_accessible :content
+  attr_accessible :content, :room_id
   after_create :broadcast_self
+  belongs_to :room
 
   def broadcast_self
     message = {
-               :channel => "/messages/new",
+               :channel => "/messages/#{self.room_id}",
                :data => self,
                :ext => {:auth_token => FAYE_TOKEN}
                }

@@ -10,8 +10,6 @@ class App.MessageItem extends Spine.Controller
     @html @view("messages/message")(@)
 
 class Index extends Spine.Controller
-  events:
-    'submit form': 'submit'
 
   constructor: ->
     super
@@ -41,16 +39,6 @@ class App.Messages extends Spine.Stack
 
   default: 'index'
   className: 'stack messages'
-
-class FayeHandler extends Spine.Module
-
-  constructor: ->
-    faye = new Faye.Client("http://localhost:9292/faye")
-    faye.subscribe('/messages/new', (data) ->
-                    addOne(data)
-                  )
-
-$ -> new FayeHandler
 
 addOne = (message) ->
   item = new App.MessageItem({ el: '', message })

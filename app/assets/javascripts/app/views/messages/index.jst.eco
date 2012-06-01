@@ -1,12 +1,12 @@
 <h1>Listing Messages</h1>
 
-<div id="messages"></div>
 
-<form id="new_message">
+<form id="rabble">
 
   <label>
     <span>Content</span>
     <input type="text" name="content" value="<%= @content %>" autofocus>
+    <input type="hidden" name="room_id" value="1">
     <br />
   </label>
 

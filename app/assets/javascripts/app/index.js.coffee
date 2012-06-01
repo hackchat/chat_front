@@ -17,10 +17,7 @@ class App extends Spine.Controller
 
   constructor: ->
     super
-
-    main = new App.MainController()
-    @append main
-
+    @append(new App.MainController())
     Spine.Route.setup()
 
 window.App = App

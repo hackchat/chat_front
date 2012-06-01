@@ -3,3 +3,20 @@
 <a data-type="edit">Edit</a> <a data-type="back">Back</a>
 
 <p>Name: <%= @name %></p>
+<div id="show_messages">
+  <% if @messages: %>
+    <% for message in @messages: %>
+      <%= message.content %>
+      <br>
+    <% end %>
+  <% end %>
+</div>
+
+<form id="new_message">
+
+  <input type="text" name="content" value="<%= @content %>" autofocus>
+  <input type="hidden" name="room_id" value="<%= @id %>">
+
+  <button>CHAT!</button>
+
+</form>

@@ -36,8 +36,8 @@ class Edit extends Spine.Controller
     @active (params) ->
       @change(params.id)
 
-  change: (id) ->
-    @item = Room.find(id)
+  change: (@id) ->
+    @item = Room.find(@id)
     @render()
 
   render: ->
@@ -49,20 +49,27 @@ class Edit extends Spine.Controller
   submit: (e) ->
     e.preventDefault()
     @item.fromForm(e.target).save()
-    @navigate '/rooms'
+    @navigate '/rooms', @item.id
 
 class Show extends Spine.Controller
   events:
     'click [data-type=edit]': 'edit'
     'click [data-type=back]': 'back'
+    'submit #new_message': 'submit'
 
   constructor: ->
     super
+    Room.bind 'refresh', @refresh
     @active (params) ->
+      Room.fetch({id: params.id})
       @change(params.id)
+      FayeHandler(params.id)
 
-  change: (id) ->
-    @item = Room.find(id)
+  refresh: =>
+    @change(@id)
+
+  change: (@id) ->
+    @item = Room.find(@id) if Room.count() > 0 and @id
     @render()
 
   render: ->
@@ -73,6 +80,11 @@ class Show extends Spine.Controller
 
   back: ->
     @navigate '/rooms'
+
+  submit: (e) ->
+    e.preventDefault()
+    App.Message.fromForm(e.target).save()
+    $("#new_message")[0].reset()
 
 class Index extends Spine.Controller
   events:
@@ -105,6 +117,15 @@ class Index extends Spine.Controller
   new: ->
     @navigate '/rooms/new'
 
+FayeHandler = (id) ->
+  faye = new Faye.Client("http://localhost:9292/faye")
+  faye.subscribe("/messages/#{id}", (data) ->
+                  addOneMessage(data)
+                )
+addOneMessage = (message) ->
+  item = new App.MessageItem({ el: '', message })
+  $("#app").find('#show_messages').append(item.render())
+
 class App.Rooms extends Spine.Stack
   controllers:
     index: Index
@@ -118,5 +139,4 @@ class App.Rooms extends Spine.Stack
     '/rooms/:id':      'show'
     '/rooms':          'index'
 
-  default: 'index'
   className: 'stack rooms'

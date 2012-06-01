@@ -3,7 +3,6 @@ $ = jQuery.sub()
 MessagesController = App.Messages
 RoomsController = App.Rooms
 
-
 class App.MainController extends Spine.Controller
   className: 'main-view'
 
