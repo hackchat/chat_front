@@ -3,16 +3,13 @@
 <a data-type="back">Back</a>
 
 <form>
-  
+
   <label>
     <span>Name</span>
-    <input 
-      type="text" name="name" 
-      value="<%= @name %>" required
- autofocus>
+    <input type="text" name="name"  value="<%= @name %>" required autofocus>
     <br />
   </label>
-  
+
   <button>Edit</button>
 
 </form>

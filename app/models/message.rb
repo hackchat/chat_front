@@ -4,9 +4,13 @@ class Message < ActiveRecord::Base
   belongs_to :room
 
   def broadcast_self
+    broadcast("/messages/#{self.room_id}", self)
+  end
+
+  def broadcast(channel, data)
     message = {
-               :channel => "/messages/#{self.room_id}",
-               :data => self,
+               :channel => channel,
+               :data => data,
                :ext => {:auth_token => FAYE_TOKEN}
                }
     uri = URI.parse("#{FAYE_DOMAIN}/faye")
