@@ -18,6 +18,7 @@ group :development, :test do
   gem 'launchy'
   gem 'debugger'
 end
+gem "twitter-bootstrap-rails"
 gem 'mustache'
 gem 'slim'
 gem 'jquery-rails'

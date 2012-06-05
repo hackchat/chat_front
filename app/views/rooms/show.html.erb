@@ -16,6 +16,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-  getMessages(8);
+  $.namespace.getMessages(<%= @room.id %>);
+  $.namespace.FayeHandler(<%= @room.id %>);
 });
 </script>
