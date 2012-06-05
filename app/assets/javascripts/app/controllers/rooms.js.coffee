@@ -63,15 +63,17 @@ class Show extends Spine.Controller
     Room.bind 'refresh', @refresh
     @active (params) ->
       Room.fetch({id: params.id})
-      @change(params.id)
       FayeHandler(params.id)
+      @change(params.id)
 
   refresh: =>
     @change(@id)
 
   change: (@id) ->
-    @item = Room.find(@id) if Room.count() > 0 and @id
-    @render()
+    if Room.count() > 0 and @id
+      @item = Room.find(@id)
+      @render()
+      addOneMessage(message) for message in @item.messages if @item.messages
 
   render: ->
     @html @view('rooms/show')(@item)

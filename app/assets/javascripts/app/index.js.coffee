@@ -8,7 +8,6 @@
 #= require_tree ./lib
 #= require_self
 #= require_tree ./models
-#= require ./controllers/messages
 #= require ./controllers/rooms
 #= require ./controllers/main_controller
 #= require_tree ./views

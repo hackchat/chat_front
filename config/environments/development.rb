@@ -36,4 +36,4 @@ Hackchat::Application.configure do
   config.assets.debug = true
 end
 
-FAYE_DOMAIN = "http://localhost:9292"
+FAYE_DOMAIN = "http://localhost:9292/faye"

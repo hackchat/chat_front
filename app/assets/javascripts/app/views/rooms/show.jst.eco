@@ -4,12 +4,6 @@
 
 <p>Name: <%= @name %></p>
 <div id="show_messages">
-  <% if @messages: %>
-    <% for message in @messages: %>
-      <%= message.content %>
-      <br>
-    <% end %>
-  <% end %>
 </div>
 
 <form id="new_message">

@@ -15,4 +15,4 @@
 //= require app
 //= require_tree .
 
-var FAYE_DOMAIN = "http://localhost:9292"
+var FAYE_DOMAIN = "http://localhost:9292/faye"
