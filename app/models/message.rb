@@ -5,7 +5,7 @@ class Message < ActiveRecord::Base
   validates_presence_of :content, :room_id
 
   def broadcast_self
-    # broadcast("/messages/#{self.room_id}", self)
+    broadcast("/messages/#{self.room_id}", self)
   end
 
   def broadcast(channel, data)
