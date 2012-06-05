@@ -1,28 +1,18 @@
 class RoomsController < ApplicationController
-  before_filter :find_room, only: [:edit, :update, :destroy]
+  before_filter :find_room, only: [:edit, :update]
 
   def index
     @rooms = Room.all
   end
 
   def create
-    Room.create!(params[:room])
-    render json: true, status: :created
-  end
-
-  def edit
-
+    @room =  Room.create(params[:room])
+    render json: true, status: :created if @room
   end
 
   def update
     @room.update_attributes(params[:room])
-    @room.save
-    render :json => true, :status => 200
-  end
-
-  def destroy
-    @room.destroy
-    render :json => true, :status => 200
+    render :json => @room, :status => 200 if @room.save
   end
 
   def show

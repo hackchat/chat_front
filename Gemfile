@@ -13,6 +13,11 @@ group :assets do
 end
 group :development, :test do
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'simplecov'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'debugger'
 end
 gem 'slim'
 gem 'jquery-rails'
@@ -25,9 +30,7 @@ gem 'faye'
 
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'

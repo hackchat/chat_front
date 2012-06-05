@@ -1,0 +1,93 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/mikesilvis/Documents/Hungry-Academy/projects/hackchat.in/services/chat/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/mikesilvis/Documents/Hungry-Academy/projects/hackchat.in/services/chat/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/mikesilvis/Documents/Hungry-Academy/projects/hackchat.in/services/chat/app/helpers/pages_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/mikesilvis/Documents/Hungry-Academy/projects/hackchat.in/services/chat/app/controllers/messages_controller.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/mikesilvis/Documents/Hungry-Academy/projects/hackchat.in/services/chat/app/models/message.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null
+      ],
+      "/Users/mikesilvis/Documents/Hungry-Academy/projects/hackchat.in/services/chat/app/controllers/pages_controller.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/mikesilvis/Documents/Hungry-Academy/projects/hackchat.in/services/chat/app/controllers/rooms_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/mikesilvis/Documents/Hungry-Academy/projects/hackchat.in/services/chat/app/models/room.rb": [
+        1,
+        1,
+        1,
+        null
+      ]
+    },
+    "timestamp": 1338857089
+  }
+}

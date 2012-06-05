@@ -23,6 +23,7 @@ class New extends Spine.Controller
 
   submit: (e) ->
     e.preventDefault()
+    ## TODO remove c-id
     room = Room.fromForm(e.target).save()
     @navigate '/rooms', room.id if room
 
