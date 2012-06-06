@@ -1,4 +1,14 @@
-h1 Chat Rooms
-- @rooms.each do |room|
-  = link_to room.name, room
-  br
+.row
+  .span6
+    h1 Chat Rooms
+    - @rooms.each do |room|
+      = link_to room.name, nil, class: "room_change", id: "#{room.id}"
+      br
+
+  .span6
+    = render @rooms.first
+
+    = simple_form_for(Message.new, remote: true) do |f|
+      = f.input "content", as: :string
+      = f.input "room_id", as: :hidden, :input_html => { :value => @rooms.first.id }
+      = f.submit "CHAT!"

@@ -65,3 +65,4 @@ Hackchat::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
+FAYE_DOMAIN = "http://localhost:9292/faye"
