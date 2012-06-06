@@ -33,6 +33,9 @@ jQuery ->
     e.preventDefault()
     room_id = $(this).attr('id')
     $.namespace.handleRoomChange(room_id)
+  $("body").keypress( (e) ->
+      # console.log(e)
+    )
 
 addOneMessage = (message) ->
   $('#chat').append Mustache.to_html($('#message_template').html(), message)
