@@ -2,7 +2,7 @@ require "bundler/capistrano"
 
 server "108.171.191.137", :web, :app, :db, primary: true
 
-set :application, "login"
+set :application, "chat_front"
 set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
