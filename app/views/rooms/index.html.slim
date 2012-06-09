@@ -16,7 +16,7 @@
           | {{room_id}}
         br
 
-    = simple_form_for(messages_path, remote: true) do |f|
+    = simple_form_for(Message.new, remote: true) do |f|
       = f.input "content", as: :string
       = f.input "room_id", as: :hidden
       = f.submit "CHAT!"

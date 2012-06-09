@@ -1,4 +1,6 @@
-class Message
+class Message < ActiveRecord::Base
+  attr_accessible :content, :room_id
+  after_create :broadcast_temp
 
   def self.broadcast_creation(params)
     @redis ||= Redis.new()
@@ -7,6 +9,10 @@ class Message
                         'room_id' => params[:room_id]}
                       }.to_json)
     broadcast("/messages/#{params[:room_id]}", params[:content])
+  end
+
+  def broadcast_temp
+    broadcast("/messages/#{self.room_id}", self)
   end
 
   def broadcast(channel, data)

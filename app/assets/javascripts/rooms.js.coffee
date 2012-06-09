@@ -1,7 +1,7 @@
 $.namespace = {
 
   getMessages: (room_id) ->
-    $.getJSON("http://localhost:3000/messages/?room_id=#{room_id}", @renderMessages)
+    $.getJSON("http://localhost:2000/messages/?room_id=#{room_id}", @renderMessages)
 
   renderMessages: (messages) =>
     for message in messages
@@ -20,10 +20,10 @@ $.namespace = {
   handleRoomChange: (room_id, room_name) =>
     $("#chat").html(" ")
     $("#room_name").text(room_name)
-    # $.namespace.fayeUnsubscribe(room_id)
-    # $.namespace.fayeSubscribe(room_id)
-    # $.namespace.getMessages(room_id)
-    # $("#message_room_id").val(room_id)
+    $.namespace.fayeUnsubscribe(room_id)
+    $.namespace.fayeSubscribe(room_id)
+    $.namespace.getMessages(room_id)
+    $("#message_room_id").val(room_id)
 
 }
 $("#new_message").live "ajax:complete", (event, xhr, status) ->
@@ -42,12 +42,12 @@ VIMMode = ->
       if e.which == 50
         $.namespace.handleRoomChange($(".room_change")[1].id, $(".room_change")[1].text)
       if e.which == 105
-        $("#_messages_content").focus()
+        $("#message_content").focus()
         e.preventDefault()
   $("body").keyup (e) ->
     if e.which == 27
-      $("#_messages_content").blur()
-  $("#_messages_content").keypress (e) ->
+      $("#message_content").blur()
+  $("#message_content").keypress (e) ->
     e.stopPropagation()
 
 addOneMessage = (message) ->

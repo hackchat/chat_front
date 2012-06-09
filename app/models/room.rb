@@ -1,4 +1,4 @@
-class Room
+class Room < ActiveRecord::Base
 
   def self.find_rooms
     resp = Faraday.get 'http://localhost:3000/rooms.json'
