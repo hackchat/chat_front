@@ -6,9 +6,17 @@
       br
 
   .span6
-    = render @rooms.first
+    h1#room_name
+    #chat
+    script#message_template type="text/html"
+      .message.row
+        .span1
+          | {{content}}
+        .span1
+          | {{room_id}}
+        br
 
-    = simple_form_for(Message.new, remote: true) do |f|
+    = simple_form_for(messages_path, remote: true) do |f|
       = f.input "content", as: :string
-      = f.input "room_id", as: :hidden, :input_html => { :value => @rooms.first.id }
+      = f.input "room_id", as: :hidden
       = f.submit "CHAT!"

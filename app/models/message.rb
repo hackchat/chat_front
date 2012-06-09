@@ -1,11 +1,12 @@
-class Message < ActiveRecord::Base
-  attr_accessible :content, :room_id
-  after_create :broadcast_self
-  belongs_to :room
-  validates_presence_of :content, :room_id
+class Message
 
-  def broadcast_self
-    broadcast("/messages/#{self.room_id}", self)
+  def self.broadcast_creation(params)
+    @redis ||= Redis.new()
+    @redis.publish("create", {'type' => 'message', 'message' =>
+                      { 'content' => params[:content],
+                        'room_id' => params[:room_id]}
+                      }.to_json)
+    broadcast("/messages/#{params[:room_id]}", params[:content])
   end
 
   def broadcast(channel, data)

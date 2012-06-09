@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
-
+gem 'redis'
 gem 'mysql2'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -27,6 +27,8 @@ gem "slim-rails"
 gem 'spine-rails'
 gem 'simple_form'
 gem 'faye'
+gem 'faraday'
+gem 'hashie'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -1,27 +1,24 @@
 class RoomsController < ApplicationController
-  before_filter :find_room, only: [:edit, :update]
 
   def index
-    @rooms = Room.all
+    @rooms = Room.find_rooms
+  end
+
+  def new
+
   end
 
   def create
-    @room =  Room.create(params[:room])
-    render json: true, status: :created if @room
+    Room.broadcast_creation(params)
+    redirect_to rooms_path
   end
 
-  def update
-    @room.update_attributes(params[:room])
-    render :json => @room, :status => 200 if @room.save
-  end
+  # def update
+  #   render :json => @room, :status => 200 if @room.save
+  # end
 
-  def show
-    @room = Room.includes(:messages).find(params[:id])
-  end
+  # def show
+  #   @room = Room.includes(:messages).find(params[:id])
+  # end
 
-private
-
-  def find_room
-    @room = Room.find(params[:id])
-  end
 end

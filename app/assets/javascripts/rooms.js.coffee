@@ -1,7 +1,7 @@
 $.namespace = {
 
   getMessages: (room_id) ->
-    $.getJSON("/messages/?room_id=#{room_id}", @renderMessages)
+    $.getJSON("http://localhost:3000/messages/?room_id=#{room_id}", @renderMessages)
 
   renderMessages: (messages) =>
     for message in messages
@@ -17,12 +17,13 @@ $.namespace = {
       @sub.callback ->
         @sub.cancel()
 
-  handleRoomChange: (room_id) =>
+  handleRoomChange: (room_id, room_name) =>
     $("#chat").html(" ")
-    $.namespace.fayeUnsubscribe(room_id)
-    $.namespace.fayeSubscribe(room_id)
-    $.namespace.getMessages(room_id)
-    $("#message_room_id").val(room_id)
+    $("#room_name").text(room_name)
+    # $.namespace.fayeUnsubscribe(room_id)
+    # $.namespace.fayeSubscribe(room_id)
+    # $.namespace.getMessages(room_id)
+    # $("#message_room_id").val(room_id)
 
 }
 $("#new_message").live "ajax:complete", (event, xhr, status) ->
@@ -31,11 +32,23 @@ $("#new_message").live "ajax:complete", (event, xhr, status) ->
 jQuery ->
   $(".room_change").click (e) ->
     e.preventDefault()
-    room_id = $(this).attr('id')
-    $.namespace.handleRoomChange(room_id)
-  $("body").keypress( (e) ->
-      # console.log(e)
-    )
+    $.namespace.handleRoomChange($(this).attr('id'), $(this).text())
+  VIMMode()
+
+VIMMode = ->
+  $("body").keypress (e) ->
+      if e.which == 49
+        $.namespace.handleRoomChange($(".room_change")[0].id, $(".room_change")[0].text)
+      if e.which == 50
+        $.namespace.handleRoomChange($(".room_change")[1].id, $(".room_change")[1].text)
+      if e.which == 105
+        $("#_messages_content").focus()
+        e.preventDefault()
+  $("body").keyup (e) ->
+    if e.which == 27
+      $("#_messages_content").blur()
+  $("#_messages_content").keypress (e) ->
+    e.stopPropagation()
 
 addOneMessage = (message) ->
   $('#chat').append Mustache.to_html($('#message_template').html(), message)
