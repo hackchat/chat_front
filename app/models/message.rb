@@ -1,27 +1,21 @@
 class Message < ActiveRecord::Base
   attr_accessible :content, :room_id
-  after_create :broadcast_temp
+  # after_create :broadcast_temp
+  REDIS_URI = URI.parse(REDIS_URL)
+  REDIS = Redis.new(host: REDIS_URI.host, port: REDIS_URI.port, password: REDIS_URI.password)
 
   def self.broadcast_creation(params)
-    @redis ||= Redis.new()
-    @redis.publish("create", {'type' => 'message', 'message' =>
-                      { 'content' => params[:content],
-                        'room_id' => params[:room_id]}
-                      }.to_json)
-    broadcast("/messages/#{params[:room_id]}", params[:content])
+    REDIS.publish("create", self.build_redis_hash(params[:content], params[:room_id]))
   end
 
-  def broadcast_temp
-    broadcast("/messages/#{self.room_id}", self)
+  def self.build_redis_hash(content, room_id)
+    {
+      "type" => "message",
+      "message" => {
+                     'content' => content,
+                     'room_id' => room_id
+                   }
+    }.to_json
   end
 
-  def broadcast(channel, data)
-    message = {
-               :channel => channel,
-               :data => data,
-               :ext => {:auth_token => FAYE_TOKEN}
-               }
-    uri = URI.parse("#{FAYE_DOMAIN}")
-    Net::HTTP.post_form(uri, :message => message.to_json)
-  end
 end
