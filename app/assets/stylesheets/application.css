@@ -17,3 +17,72 @@
 a {
   cursor: pointer;
 }
+
+body {
+  background-color: #002b36 !important;
+}
+
+.well {
+  background-color: #93a1a1 !important;
+}
+
+#chats_list{
+  background-color: #859900 !important;
+}
+
+#chat_well{
+  background-color: #839496 !important;
+  margin-left: -10px;
+}
+
+#chat_room_well{
+  background-color: #859900 !important;
+  margin-right: 10px;
+  height: 500px;
+  overflow: scroll;
+}
+
+.gravatar{
+  margin-top: -10px;
+  margin-bottom: -10px;
+  margin-left: -35px;
+  height: 30px;
+}
+
+#chat_content{
+  margin-left: -60px;
+}
+
+#enter{
+  margin-left: 270px;
+  background-color: #657b83 !important;
+}
+
+#individual_chat_room{
+  margin-left:-10px;
+  padding-right:100px;
+  background-color:#cb4b16 !important;
+}
+
+#chat_entry_box{
+  width:300px !important;
+  height:50px !important;
+  background-color: #6c71c4 !important;
+}
+
+$base03:    #002b36;
+$base02:    #073642;
+$base01:    #586e75;
+$base00:    #657b83;
+$base0:     #839496;
+$base1:     #93a1a1;
+$base2:     #eee8d5;
+$base3:     #fdf6e3;
+$yellow:    #b58900;
+$orange:    #cb4b16;
+$red:       #dc322f;
+$magenta:   #d33682;
+$violet:    #6c71c4;
+$blue:      #268bd2;
+$cyan:      #2aa198;
+$green:     #859900;

@@ -52,3 +52,4 @@ VIMMode = ->
 
 addOneMessage = (message) ->
   $('#chat').append Mustache.to_html($('#message_template').html(), message)
+
