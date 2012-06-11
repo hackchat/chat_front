@@ -1,7 +1,6 @@
 class RoomsController < ApplicationController
 
   def index
-    raise session.inspect
     @rooms = Room.all
   end
 
