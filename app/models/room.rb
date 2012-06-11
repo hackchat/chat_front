@@ -1,7 +1,7 @@
 class Room < ActiveRecord::Base
 
   def self.find_rooms
-    resp = Faraday.get 'http://127.0.0.1:7002/rooms.json'
+    resp = Faraday.get 'http://store.hackchat.in/rooms.json'
     JSON.parse(resp.body).collect do |json|
       Hashie::Mash.new(json)
     end
