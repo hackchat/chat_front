@@ -1,5 +1,4 @@
 class Message < ActiveRecord::Base
-
   before_create :highlight
   attr_accessible :content, :room_id, :language
 
