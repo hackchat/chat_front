@@ -17,7 +17,7 @@ class Message < ActiveRecord::Base
   end
 
   def highlight
-    unless self.language == "text"
+    unless self.language == "Plain Text"
       self.message = Pygments.highlight(self.message, lexer: self.language)
     end
   end
