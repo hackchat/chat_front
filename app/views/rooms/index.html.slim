@@ -25,6 +25,6 @@ ul.nav.nav-tabs.span10
     .row.well.span6#enter
         = simple_form_for(Message.new, remote: true) do |f|
           = f.input "content", :placeholder => "Enter Chat...", as: :string, id: "chat_entry_box"
-          = f.select :language
+          = f.select :language, PYGMENTS_LANGUAGES, selected: "Plain Text"
           = f.input "room_id", as: :hidden
           = f.submit "CHAT!"

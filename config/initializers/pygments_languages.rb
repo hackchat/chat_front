@@ -1,4 +1,4 @@
-PYMENTS_LANGUAGES = 
+PYGMENTS_LANGUAGES = 
   ["ActionScript",
   "Ada",
   "ANTLR",
