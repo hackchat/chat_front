@@ -1,4 +1,5 @@
 class Message < ActiveRecord::Base
+  REDIS = Redis.new(host: REDIS_URI.host, port: REDIS_URI.port, password: REDIS_URI.password)
   before_create :highlight
   attr_accessible :content, :room_id, :language
 
