@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 gem 'redis'
 gem 'mysql2'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -10,6 +11,7 @@ group :assets do
   gem 'eco'
   gem 'uglifier', '>= 1.0.3'
 end
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
@@ -18,6 +20,9 @@ group :development, :test do
   gem 'launchy'
   gem 'debugger'
 end
+
+gem 'pygments.rb'
+
 gem 'therubyracer'
 gem "twitter-bootstrap-rails"
 gem 'mustache'

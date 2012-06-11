@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120530214846) do
+ActiveRecord::Schema.define(:version => 20120611143029) do
 
   create_table "messages", :force => true do |t|
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "room_id"
+    t.string   "language"
   end
 
   add_index "messages", ["room_id"], :name => "index_messages_on_room_id"
