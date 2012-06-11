@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require_tree .
+ *= require solarized-light
 */
 .stack > *:not(.active){
   display: none;

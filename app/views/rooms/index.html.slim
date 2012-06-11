@@ -19,12 +19,12 @@ ul.nav.nav-tabs.span10
           .span1
             = image_tag "http://www.gravatar.com/avatar/039547def8be2e50f7dc4a1beb9fecaa", class: "gravatar"
           .span4#chat_content
-            | {{content}}
+            | {{{content}}}
           br
 
     .row.well.span6#enter
         = simple_form_for(Message.new, remote: true) do |f|
-          = f.input "content", :placeholder => "Enter Chat...", as: :string, id: "chat_entry_box"
+          = f.input "content", :placeholder => "Enter Chat...", id: "chat_entry_box"
           = f.select :language, PYGMENTS_LANGUAGES, selected: "Plain Text"
           = f.input "room_id", as: :hidden
           = f.submit "CHAT!"
