@@ -10,6 +10,11 @@ group :assets do
   gem 'skim'
   gem 'eco'
   gem 'uglifier', '>= 1.0.3'
+  gem "twitter-bootstrap-rails"
+  gem 'mustache'
+  gem 'slim'
+  gem 'jquery-rails'
+  gem "slim-rails"
 end
 
 group :development, :test do
@@ -24,11 +29,6 @@ end
 gem 'pygments.rb'
 
 gem 'therubyracer'
-gem "twitter-bootstrap-rails"
-gem 'mustache'
-gem 'slim'
-gem 'jquery-rails'
-gem "slim-rails"
 gem 'spine-rails'
 gem 'simple_form'
 gem 'faye'
