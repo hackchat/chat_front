@@ -10,8 +10,10 @@
     #chat
     script#message_template type="text/html"
       .message.row
-        .span1
-          | {{content}}
+        .span3
+          pre
+            code data-language="ruby"
+              | {{content}}
         .span1
           | {{room_id}}
         br

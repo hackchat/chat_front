@@ -17,4 +17,6 @@
 //= require_tree .
 //= require rooms
 //= require mustache
+//= require rainbow.min
+//= require ruby
 var FAYE_DOMAIN = "http://localhost:9292/faye"
