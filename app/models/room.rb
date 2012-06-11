@@ -8,9 +8,16 @@ class Room < ActiveRecord::Base
   end
 
   def self.broadcast_creation(params)
-    @redis ||= Redis.new()
-    @redis.publish("create", {'type' => 'room', 'room' =>
-                      { 'name' => params[:name]}}.to_json)
+    REDIS.publish("create", build_redis_hash(params[:name]))
+  end
+
+  def self.build_redis_hash(name)
+    {
+      "type" => "room",
+      "room" => {
+                  "name" => name
+                }
+    }.to_json
   end
 
 end
