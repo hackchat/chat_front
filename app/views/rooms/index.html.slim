@@ -1,3 +1,4 @@
+
 .row
   .span6
     h1 Chat Rooms
@@ -10,8 +11,8 @@
     #chat
     script#message_template type="text/html"
       .message.row
-        .span1
-          | {{content}}
+        .span3
+          = CodeRay.scan("{{content}}", :ruby).div(css: :class).html_safe
         .span1
           | {{room_id}}
         br

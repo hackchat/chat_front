@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require_tree .
+ *= require coderay
 */
 .stack > *:not(.active){
   display: none;
