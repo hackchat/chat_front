@@ -6,5 +6,11 @@ html
     = javascript_include_tag "application", "#{FAYE_DOMAIN}/faye.js"
     = csrf_meta_tags
   body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container#navbar-container
+          .brand href="#"
+            = image_tag "https://dl.dropbox.com/u/71404227/HackChatLogo.gif", class: "logo"
+
     .container
       = yield

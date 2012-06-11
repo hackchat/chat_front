@@ -27,16 +27,17 @@ body {
 }
 
 #chats_list{
-  background-color: #859900 !important;
+  background-color: #cb4b16 !important;
+  margin-left: 15px;
 }
 
 #chat_well{
-  background-color: #839496 !important;
+  background-color: #268bd2 !important;
   margin-left: -10px;
 }
 
 #chat_room_well{
-  background-color: #859900 !important;
+  background-color: #eee8d5 !important;
   margin-right: 10px;
   height: 500px;
   overflow: scroll;
@@ -54,20 +55,68 @@ body {
 }
 
 #enter{
-  margin-left: 270px;
+  margin-left: 255px;
   background-color: #657b83 !important;
 }
 
 #individual_chat_room{
   margin-left:-10px;
   padding-right:100px;
-  background-color:#cb4b16 !important;
+  background-color:#859900 !important;
 }
 
 #chat_entry_box{
   width:300px !important;
   height:50px !important;
   background-color: #6c71c4 !important;
+}
+
+.nav-tab{
+  height: 32px;
+  margin-top: 65px;
+  margin-left: 85px;
+}
+
+.nav{
+  margin-left:85px;
+}
+
+
+.logo{
+  width: 150px;
+  margin-left: 85px;
+}
+
+.navbar.navbar-fixed-top{
+  background-color: #d33682;
+}
+
+#navbar-container{
+  background-color:#d33682;
+}
+
+#big_well{
+  margin-left:0px;
+}
+
+.first{
+  background-color: #cb4b16;
+  margin-top: 25px;
+  margin-right: 10px;
+}
+
+.first:hover{
+  background-color: #cb4b16;
+}
+
+.second{
+  background-color: #268bd2;
+  margin-top: 25px;
+  margin-right
+}
+
+#room_name{
+  background-color: #eee8d5 !important;
 }
 
 $base03:    #002b36;
