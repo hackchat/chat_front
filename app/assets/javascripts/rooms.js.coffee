@@ -1,7 +1,7 @@
 $.namespace = {
 
   getMessages: (room_id) ->
-    $.getJSON("http://localhost:2000/messages/?room_id=#{room_id}", @renderMessages)
+    $.getJSON("#{document.URL}messages/?room_id=#{room_id}", @renderMessages)
 
   renderMessages: (messages) =>
     for message in messages
@@ -11,6 +11,7 @@ $.namespace = {
     faye = new Faye.Client("http://localhost:9292/faye")
     @sub = faye.subscribe("/messages/#{room_id}", (data) ->
                      addOneMessage(data)
+                     console.log "JHER"
                   )
   fayeUnsubscribe: (room_id) =>
     if @sub
@@ -52,4 +53,4 @@ VIMMode = ->
 
 addOneMessage = (message) ->
   $('#chat').append Mustache.to_html($('#message_template').html(), message)
-
+  $("#chat").scrollTop(11000)

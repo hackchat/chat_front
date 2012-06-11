@@ -24,7 +24,11 @@ body {
 }
 
 .well {
-  background-color: #93a1a1 !important;
+  /*background-color: #EEE8D5 !important;*/
+}
+
+.chat_client{
+  /*background-color:black !important;*/
 }
 
 #chats_list{
@@ -32,13 +36,15 @@ body {
   margin-left: 15px;
 }
 
-#chat_well{
-  background-color: #268bd2 !important;
-  margin-left: -10px;
+.chat_well{
+  background-color: #eee8d5 !important;
+  padding: -10px;
+  margin-left: -25px;
+  margin-top: 5px;
 }
 
-#chat_room_well{
-  background-color: #eee8d5 !important;
+#chat{
+  background-color: #93a1a1 !important;
   margin-right: 10px;
   height: 500px;
   overflow: scroll;
@@ -84,7 +90,7 @@ body {
 
 
 .logo{
-  width: 150px;
+  width: 80px;
   margin-left: 85px;
 }
 
@@ -101,7 +107,7 @@ body {
 }
 
 .first{
-  background-color: #cb4b16;
+  background-color: #eee8d5;
   margin-top: 25px;
   margin-right: 10px;
 }
@@ -116,7 +122,11 @@ body {
 }
 
 #room_name{
-  background-color: #eee8d5 !important;
+  /*background-color: #eee8d5 !important;*/
+}
+#message_content{
+  width:98%;
+  height:50px;
 }
 
 $base03:    #002b36;
