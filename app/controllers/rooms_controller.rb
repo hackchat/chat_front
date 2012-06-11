@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
 
   def index
-    @rooms = Room.find_rooms
+    @rooms = Room.all
   end
 
   def new
@@ -9,16 +9,9 @@ class RoomsController < ApplicationController
   end
 
   def create
-    Room.broadcast_creation(params)
+    # Room.broadcast_creation(params)
+    Room.create(params[:room])
     redirect_to rooms_path
   end
-
-  # def update
-  #   render :json => @room, :status => 200 if @room.save
-  # end
-
-  # def show
-  #   @room = Room.includes(:messages).find(params[:id])
-  # end
 
 end
