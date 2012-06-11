@@ -1,4 +1,5 @@
 class Room < ActiveRecord::Base
+  REDIS = Redis.new(host: REDIS_URI.host, port: REDIS_URI.port, password: REDIS_URI.password)
   def self.find_rooms
     resp = Faraday.get 'http://store.hackchat.in/rooms.json'
     JSON.parse(resp.body).collect do |json|
