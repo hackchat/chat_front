@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120611143029) do
+ActiveRecord::Schema.define(:version => 20120611215314) do
 
   create_table "messages", :force => true do |t|
     t.text     "content"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20120611143029) do
     t.datetime "updated_at", :null => false
     t.integer  "room_id"
     t.string   "language"
+    t.string   "user_token"
   end
 
   add_index "messages", ["room_id"], :name => "index_messages_on_room_id"

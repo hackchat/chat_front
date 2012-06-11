@@ -1,17 +1,18 @@
 class Message < ActiveRecord::Base
   before_create :highlight
-  attr_accessible :content, :room_id, :language
+  attr_accessible :content, :room_id, :language, :user_token
 
   def self.broadcast_creation(params)
-    REDIS.publish("create", self.build_redis_hash(params[:content], params[:room_id]))
+    REDIS.publish("create", self.build_redis_hash(params[:content], params[:room_id], params[:auth_token]))
   end
 
-  def self.build_redis_hash(content, room_id)
+  def self.build_redis_hash(content, room_id, auth_token)
     {
       "type" => "message",
       "message" => {
                      'content' => content,
-                     'room_id' => room_id
+                     'room_id' => room_id,
+                     'user_token' => auth_token
                    }
     }.to_json
   end

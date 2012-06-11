@@ -9,6 +9,7 @@ class RoomsController < ApplicationController
   end
 
   def create
+    Room.create(params[:room])
     Room.broadcast_creation(params)
     redirect_to rooms_path
   end

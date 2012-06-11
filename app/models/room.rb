@@ -1,5 +1,6 @@
 class Room < ActiveRecord::Base
-
+  attr_accessible :name
+  
   def self.find_rooms
     resp = Faraday.get 'http://localhost:3000/rooms.json'
     JSON.parse(resp.body).collect do |json|

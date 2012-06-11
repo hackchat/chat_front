@@ -17,8 +17,10 @@ ul.nav.nav-tabs.span10
       script#message_template type="text/html"
         .message.row.span5.well#chat_well
           .span1
-            = image_tag "http://www.gravatar.com/avatar/039547def8be2e50f7dc4a1beb9fecaa", class: "gravatar"
+            img(src="{{avatar}}")
           .span4#chat_content
+            | {{first_name}} {{last_name}}
+            br
             | {{{content}}}
           br
 
