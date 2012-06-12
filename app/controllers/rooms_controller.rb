@@ -12,7 +12,7 @@ class RoomsController < ApplicationController
   def create
     # Room.broadcast_creation(params)
     Room.create(params[:room])
-    redirect_to root_url
+    redirect_to "http://hackchat.in"
   end
 
 end
