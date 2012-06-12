@@ -12,11 +12,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem "twitter-bootstrap-rails"
   gem 'mustache'
-  gem 'slim'
   gem 'jquery-rails'
-  gem "slim-rails"
 end
 
+gem "slim-rails"
+gem 'slim'
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
