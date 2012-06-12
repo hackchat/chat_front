@@ -8,7 +8,7 @@ $.namespace = {
       addOneMessage(message)
 
   fayeSubscribe: (room_id) =>
-    faye = new Faye.Client("http://localhost:9292/faye")
+    faye = new Faye.Client("http://hackchat.in:9292/faye")
     @sub = faye.subscribe("/messages/#{room_id}", (data) ->
                      addOneMessage(data)
                      console.log "JHER"
