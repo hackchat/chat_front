@@ -11,7 +11,7 @@ class RoomsController < ApplicationController
   def create
     # Room.broadcast_creation(params)
     Room.create(params[:room])
-    redirect_to "/"
+    redirect_to root_url
   end
 
 end
