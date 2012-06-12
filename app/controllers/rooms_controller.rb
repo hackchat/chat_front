@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  # skip_before_filter :create
 
   def index
     @rooms = Room.all
