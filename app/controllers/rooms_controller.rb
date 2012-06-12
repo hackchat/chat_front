@@ -9,7 +9,7 @@ class RoomsController < ApplicationController
   end
 
   def create
-    Room.broadcast_creation(params)
+    # Room.broadcast_creation(params)
     Room.create(params[:room])
     redirect_to "/"
   end
