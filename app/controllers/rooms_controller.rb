@@ -15,3 +15,4 @@ class RoomsController < ApplicationController
   end
 
 end
+3
