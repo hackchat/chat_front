@@ -1,5 +1,4 @@
 class RoomsController < ApplicationController
-  # skip_before_filter :create
 
   def index
     @rooms = Room.all
@@ -12,7 +11,11 @@ class RoomsController < ApplicationController
   def create
     # Room.broadcast_creation(params)
     Room.create(params[:room])
-    redirect_to "http://hackchat.in"
+    if Rails.env.production?
+      redirect_to "http://hackchat.in"
+    else
+      redirect_to "http://localhost:2000"
+    end
   end
 
 end
