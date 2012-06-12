@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
       if Rails.env.production?
         redirect_to "http://login.hackchat.in"
       else
-        redirect_to "http://localhost:4000/login"
+        redirect_to "http://localhost:4000/"
       end
     end
   end
