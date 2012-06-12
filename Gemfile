@@ -14,7 +14,7 @@ group :assets do
   gem 'mustache'
   gem 'jquery-rails'
 end
-
+gem 'rb-readline'
 gem "slim-rails"
 gem 'slim'
 group :development, :test do
