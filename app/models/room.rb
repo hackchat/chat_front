@@ -1,5 +1,6 @@
 class Room < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :user_token
+  after_create :broadcast_creation
 
   def self.find_rooms
     resp = Faraday.get 'http://store.hackchat.in/rooms.json'
@@ -8,15 +9,18 @@ class Room < ActiveRecord::Base
     end
   end
 
-  def self.broadcast_creation(params)
-    REDIS.publish("create", build_redis_hash(params[:name]))
+  def broadcast_creation
+    REDIS.publish("create", build_redis_hash)
   end
 
-  def self.build_redis_hash(name)
+  def build_redis_hash
     {
       "type" => "room",
       "room" => {
-                  "name" => name
+                  "name" => self.name,
+                  "user_token" => self.user_token,
+                  "owner" => true,
+                  "room_id" => self.id
                 }
     }.to_json
   end

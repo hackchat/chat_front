@@ -1,7 +1,9 @@
 class RoomsController < ApplicationController
 
   def index
-    @rooms = Room.all
+    @rooms = current_rooms.collect do |room_perm|
+              Room.find(room_perm.room_id)
+            end
   end
 
   def new
@@ -9,8 +11,8 @@ class RoomsController < ApplicationController
   end
 
   def create
-    # Room.broadcast_creation(params)
-    Room.create(params[:room])
+    params[:room][:user_token] = current_user.auth_token
+    room = Room.create(params[:room])
     if Rails.env.production?
       redirect_to "http://hackchat.in"
     else
