@@ -1,7 +1,7 @@
 $.namespace = {
 
   getMessages: (room_id) ->
-    $.getJSON("#{document.URL}messages/?room_id=#{room_id}", @renderMessages)
+    $.getJSON("#{document.URL}messages.json/?room_id=#{room_id}", @renderMessages)
 
   renderMessages: (messages) =>
     for message in messages
