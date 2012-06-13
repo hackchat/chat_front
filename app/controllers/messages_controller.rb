@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
 
   def create
     params[:message][:user_token] = current_user.auth_token
-    Message.broadcast_creation(params[:message])
+    raise params[:message].inspect
     @message = Message.create(params[:message])
     render json: true, status: :created
   end

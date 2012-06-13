@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def require_login
-    unless session[:user_token]
+  def require_login 
+    unless session[:user_token] || params[:user_token]
       if Rails.env.production?
         redirect_to "http://login.hackchat.in"
       else

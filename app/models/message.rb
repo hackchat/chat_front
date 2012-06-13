@@ -1,20 +1,16 @@
 class Message < ActiveRecord::Base
   before_create :highlight
+  after_create :broadcast_creation
   attr_accessible :content, :room_id, :language, :user_token
 
-  def self.broadcast_creation(params)
-    REDIS.publish("create", self.build_redis_hash(params[:content], params[:room_id], params[:auth_token]))
-  end
-
-  def self.build_redis_hash(content, room_id, auth_token)
-    {
-      "type" => "message",
-      "message" => {
-                     'content' => content,
-                     'room_id' => room_id,
-                     'user_token' => auth_token
-                   }
-    }.to_json
+  def broadcast_creation
+    message = {
+           :channel => "/messages/#{self.room_id}",
+           :data => self.content,
+           :ext => {:auth_token => "suppppyallll"}
+           }
+    uri = URI.parse("http://localhost:9292/faye")
+    Net::HTTP.post_form(uri, :message => message.to_json) if uri
   end
 
   def highlight

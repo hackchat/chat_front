@@ -10,19 +10,9 @@ class Room < ActiveRecord::Base
   end
 
   def broadcast_creation
-    REDIS.publish("create", build_redis_hash)
+    con = Faraday.new("http://localhost:5000")
+    con.post "/user_room_permission", { user_token: self.user_token, room_id: self.id}
   end
-
-  def build_redis_hash
-    {
-      "type" => "room",
-      "room" => {
-                  "name" => self.name,
-                  "user_token" => self.user_token,
-                  "owner" => true,
-                  "room_id" => self.id
-                }
-    }.to_json
-  end
+  
 
 end

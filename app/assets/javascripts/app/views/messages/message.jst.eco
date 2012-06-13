@@ -1,3 +1,0 @@
-<div class="item" data-id="<%= @message.id %>">
-  <%= @message.content %>
-</div>
