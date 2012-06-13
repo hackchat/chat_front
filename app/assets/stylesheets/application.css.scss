@@ -12,126 +12,10 @@
  *= require_tree .
  *= require solarized-light
 */
-.stack > *:not(.active){
-  display: none;
-}
-a {
-  cursor: pointer;
-}
 
-body {
-  background-color: #002b36 !important;
-}
-
-.well {
-  padding: 10px;
-  /*background-color: #EEE8D5 !important;*/
-}
-
-.chat_client{
-  /*background-color:black !important;*/
-}
-
-#chats_list{
-  background-color: #cb4b16 !important;
-  margin-left: 15px;
-  height:500px;
-  overflow:scroll;
-}
-
-.chat_well{
-  background-color: #eee8d5 !important;
-  padding: -10px;
-  margin-left: -25px;
-  margin-top: 5px;
-}
-
-#chat{
-  background-color: #93a1a1 !important;
-  margin-right: 10px;
-  height: 500px;
-  overflow: scroll;
-}
-
-.gravatar{
-  margin-top: -10px;
-  margin-bottom: -10px;
-  margin-left: -35px;
-  height: 30px;
-}
-
-.chat_content{
-  margin-left: -40px;
-}
-
-#enter{
-  margin-left: 255px;
-  background-color: #657b83 !important;
-}
-
-#individual_chat_room{
-  margin-left:-10px;
-  padding-right:100px;
-  background-color:#859900 !important;
-}
-
-#chat_entry_box{
-  width:300px !important;
-  height:50px !important;
-  background-color: #6c71c4 !important;
-}
-
-.nav-tab{
-  height: 32px;
-  margin-top: 65px;
-  margin-left: 85px;
-}
-
-.nav{
-  margin-left:85px;
-}
-
-
-.logo{
-  width: 80px;
-  margin-left: 85px;
-}
-
-.navbar.navbar-fixed-top{
-  background-color: #d33682;
-}
-
-#navbar-container{
-  background-color:#d33682;
-}
-
-#big_well{
-  margin-left:0px;
-}
-
-.first{
-  background-color: #eee8d5;
-  margin-top: 25px;
-  margin-right: 10px;
-}
-
-.first:hover{
-  background-color: #cb4b16;
-}
-
-.second{
-  background-color: #268bd2;
-  margin-top: 25px;
-}
-
-#room_name{
-  /*background-color: #eee8d5 !important;*/
-}
-#message_content{
-  width:98%;
-  height:50px;
-}
-
+$tumblred: #C10000;
+$turquise: #1DCAC0;
+$tumblrfont: #4F4F4F;
 $base03:    #002b36;
 $base02:    #073642;
 $base01:    #586e75;
@@ -148,3 +32,114 @@ $violet:    #6c71c4;
 $blue:      #268bd2;
 $cyan:      #2aa198;
 $green:     #859900;
+
+
+.stack > *:not(.active){
+  display: none;
+}
+a {
+  cursor: pointer;
+}
+
+body {
+  background-color: $cyan !important;
+}
+
+.well {
+  padding: 10px;
+  /*background-color: #EEE8D5 !important;*/
+}
+
+.chat_client{
+  background-color: $base01 !important;
+  height:510px;
+}
+
+#chats_list{
+  background-color: $red !important;
+  margin-left: 15px;
+  height:510px;
+  overflow:scroll;
+}
+
+.chat_well{
+  background-color: #eee8d5 !important;
+  padding: -10px;
+  margin-left: -25px;
+  margin-top: 5px;
+  width: 600px;
+}
+
+#chat{
+  background-color: white !important;
+  margin-right: 20px;
+  height: 465px;
+  width: 460px;
+  overflow: scroll;
+}
+
+.gravatar{
+  margin-top: -10px;
+  margin-bottom: -10px;
+  margin-left: -35px;
+  height: 30px;
+}
+
+.chat_content{
+  margin-left: -40px;
+}
+
+#enter{
+  margin-left: 235px;
+  background-color: #657b83 !important;
+}
+
+#individual_chat_room{
+  margin-left:-10px;
+  padding-right:100px;
+  background-color:#859900 !important;
+}
+
+#chat_entry_box{
+  width:300px !important;
+  height:50px !important;
+}
+
+
+.nav{
+  margin-left:85px;
+}
+
+
+.logo{
+  width: 80px;
+  margin-left: 85px;
+}
+
+.navbar.navbar-fixed-top{
+  background-color: $red !important;
+}
+
+#navbar-container{
+  background-color: $red !important;
+}
+
+#big_well{
+  margin-left:85px;
+}
+
+
+#room_name{
+  margin-bottom: 10px;
+}
+#message_content{
+  width:98%;
+  height:50px;
+}
+
+.room_change{
+  font-weight: bold;
+  font-size: 24px;
+  color:$yellow !important;
+}
+
