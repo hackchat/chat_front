@@ -15,6 +15,7 @@ module ApplicationHelper
     perms = JSON.parse(resp.body)
     perms.collect do |perm|
       Hashie::Mash.new(perm)
+    end
   end
 
   def message_owner(auth_token)

@@ -1,31 +1,27 @@
-ul.nav.nav-tabs.span10
-  li.first: a[href="#chat" data-toggle="tab"] Chat
-  li.second: a[href="stats" data-toggle="tab"] Stats
+.row.fluid.well.span10#big_well
+  .well.span2#chats_list
+    h2 Rooms
+    - @rooms.each do |room|
+      .well= link_to room.name, nil, class: "room_change", id: "#{room.id}"
 
-  .row.fluid.well.span10#big_well
-    .well.span2#chats_list
-      h2 Rooms
-      - @rooms.each do |room|
-        .well= link_to room.name, nil, class: "room_change", id: "#{room.id}"
-
-    .well.span6.chat_client
-      h1#room_name
-      #chat
-      script#message_template type="text/html"
-        .message.row.span5.well.chat_well
-          .span1
-            img(src="{{avatar}}")
-          .span4.chat_content
-            | {{first_name}} {{last_name}}
-            br
-            | {{{content}}}
+  .well.span6.chat_client
+    h1#room_name
+    #chat
+    script#message_template type="text/html"
+      .message.row.span5.well.chat_well
+        .span1
+          img(src="{{avatar}}")
+        .span4.chat_content
+          | {{first_name}} {{last_name}}
           br
+          | {{{content}}}
+        br
 
-    .row.fluid
-      .well.span6#enter
-          = simple_form_for(Message.new, remote: true) do |f|
-            = f.input "content", :placeholder => "Enter Chat...", id: "chat_entry_box"
-            = f.select :language, PYGMENTS_LANGUAGES, selected: "Plain Text"
-            = f.input "room_id", as: :hidden
-            br
-            = f.submit "CHAT!", class: "btn btn-info"
+  .row.fluid
+    .well.span6#enter
+        = simple_form_for(Message.new, remote: true) do |f|
+          = f.input "content", :placeholder => "Enter Chat...", id: "chat_entry_box"
+          = f.select :language, PYGMENTS_LANGUAGES, selected: "Plain Text"
+          = f.input "room_id", as: :hidden
+          br
+          = f.submit "CHAT!", class: "btn btn-info"
