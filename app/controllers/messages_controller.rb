@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
     user = current_user
     params[:message][:user_token] = user.user_token
     params[:message][:avatar] = user.avatar
-    params[:message][:name] = "#{user.first_name} #{user.last_name}"
+    params[:message][:name] = "#{user.first_name} #{user.last_name[0]}."
     @message = Message.create(params[:message])
     render json: true, status: :created
   end
