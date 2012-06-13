@@ -24,6 +24,7 @@ body {
 }
 
 .well {
+  padding: 10px;
   /*background-color: #EEE8D5 !important;*/
 }
 
@@ -59,8 +60,8 @@ body {
   height: 30px;
 }
 
-#chat_content{
-  margin-left: -60px;
+.chat_content{
+  margin-left: -40px;
 }
 
 #enter{
