@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
 
   def index
-    @rooms = current_rooms.collect do |room_perm|
+    @rooms = current_room_permissions.collect do |room_perm|
                Room.find(room_perm.room_id)
              end
   end

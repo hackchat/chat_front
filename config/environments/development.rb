@@ -35,5 +35,3 @@ Hackchat::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 end
-
-FAYE_DOMAIN = "http://hackchat.in:9292/faye"
