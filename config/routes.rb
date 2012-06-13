@@ -1,4 +1,4 @@
 Hackchat::Application.routes.draw do
-  resources :messages, :rooms, :room_permissions
+  resources :messages, :rooms, :permissions
   root to: "rooms#index"
 end

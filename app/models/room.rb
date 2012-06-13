@@ -10,7 +10,8 @@ class Room < ActiveRecord::Base
   end
 
   def broadcast_creation
-    Faraday.post "#{PERMISSIONS_URL}user_room_permission",  { user_token: self.user_token, room_id: self.id}
+    Faraday.post "#{PERMISSIONS_URL}user_room_permission",
+                  { user_token: self.user_token, room_id: self.id, owner: true}
   end
 
 
