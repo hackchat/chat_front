@@ -1,17 +1,16 @@
 $.namespace = {
 
   getMessages: (room_id) ->
-    $.getJSON("#{document.URL}messages.json/?room_id=#{room_id}", @renderMessages)
+    $.getJSON("#{document.URL}messages.json?room_id=#{room_id}", @renderMessages)
 
   renderMessages: (messages) =>
     for message in messages
       addOneMessage(message)
 
   fayeSubscribe: (room_id) =>
-    faye = new Faye.Client()
-    @sub = faye.subscribe(FAYE_DOMAIN + "/messages/#{room_id}", (data) ->
+    faye = new Faye.Client(FAYE_DOMAIN)
+    @sub = faye.subscribe("/messages/#{room_id}", (data) ->
                      addOneMessage(data)
-                     console.log "JHER"
                   )
   fayeUnsubscribe: (room_id) =>
     if @sub

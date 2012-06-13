@@ -1,12 +1,12 @@
 class Message < ActiveRecord::Base
   before_create :highlight
   after_create :broadcast_creation
-  attr_accessible :content, :room_id, :language, :user_token
+  attr_accessible :content, :room_id, :language, :user_token, :avatar, :name
 
   def broadcast_creation
     message = {
            :channel => "/messages/#{self.room_id}",
-           :data => self.content,
+           :data => self,
            :ext => {:auth_token => "suppppyallll"}
            }
     uri = URI.parse(FAYE_DOMAIN)

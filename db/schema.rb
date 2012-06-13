@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120612191717) do
+ActiveRecord::Schema.define(:version => 20120613142247) do
 
   create_table "messages", :force => true do |t|
     t.text     "content"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(:version => 20120612191717) do
     t.integer  "room_id"
     t.string   "language"
     t.string   "user_token"
+    t.string   "avatar"
+    t.string   "name"
   end
 
   add_index "messages", ["room_id"], :name => "index_messages_on_room_id"

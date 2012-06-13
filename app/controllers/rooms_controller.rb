@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-
+  before_filter :require_login, only: [:index, :create]
   def index
     @rooms = current_room_permissions.collect do |room_perm|
                Room.find(room_perm.room_id)
