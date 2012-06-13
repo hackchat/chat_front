@@ -3,7 +3,7 @@ html
   head
     title Hackchat
     = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application", "#{FAYE_DOMAIN}faye.js"
+    = javascript_include_tag "application", "#{FAYE_DOMAIN}/faye.js"
     = csrf_meta_tags
   body
     .navbar.navbar-fixed-top
