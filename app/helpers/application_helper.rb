@@ -11,7 +11,6 @@ module ApplicationHelper
   end
 
   def current_room_permissions
-
     resp = Faraday.get "#{PERMISSIONS_URL}users/#{session[:user_token]}.json"
     perms = JSON.parse(resp.body)
     perms.collect do |perm|
