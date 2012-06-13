@@ -8,8 +8,8 @@ $.namespace = {
       addOneMessage(message)
 
   fayeSubscribe: (room_id) =>
-    faye = new Faye.Client()
-    @sub = faye.subscribe(FAYE_DOMAIN + "/messages/#{room_id}", (data) ->
+    faye = new Faye.Client(FAYE_DOMAIN)
+    @sub = faye.subscribe("/messages/#{room_id}", (data) ->
                      addOneMessage(data)
                      console.log "JHER"
                   )
