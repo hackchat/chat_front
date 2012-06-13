@@ -15,11 +15,7 @@ module ApplicationHelper
     perms = JSON.parse(resp.body)
     perms.collect do |perm|
       Hashie::Mash.new(perm)
-  end
-
-  def message_owner(auth_token)
-    resp = Faraday.get "http://login.hackchat.in/users/#{auth_token}.json"
-    Hashie::Mash.new(JSON.parse(resp.body))
+    end
   end
 
 end
