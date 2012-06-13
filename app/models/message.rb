@@ -9,7 +9,7 @@ class Message < ActiveRecord::Base
            :data => self.content,
            :ext => {:auth_token => "suppppyallll"}
            }
-    uri = URI.parse("http://localhost:9292/faye")
+    uri = URI.parse(FAYE_DOMAIN)
     Net::HTTP.post_form(uri, :message => message.to_json) if uri
   end
 

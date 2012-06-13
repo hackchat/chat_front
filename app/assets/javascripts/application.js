@@ -16,4 +16,4 @@
 //= require_tree .
 //= require rooms
 //= require mustache
-var FAYE_DOMAIN = "http://hackchat.in:9292/faye"
+var FAYE_DOMAIN = "http://hackchat.dev:9292/faye"
