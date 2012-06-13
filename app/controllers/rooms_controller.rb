@@ -15,13 +15,9 @@ class RoomsController < ApplicationController
   end
 
   def create
-    params[:room][:user_token] = current_user.auth_token
+    params[:room][:user_token] = current_user.user_token
     room = Room.create(params[:room])
-    if Rails.env.production?
-      redirect_to CHAT
-    else
-      redirect_to CHAT
-    end
+    redirect_to CHAT
   end
 
 end
