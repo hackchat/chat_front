@@ -1,4 +1,4 @@
-= form_tag('/permissions', :method => "post") do
+= form_tag(room_permissions_path(params[:room_id]), :method => "post") do
   = label_tag :email
   = text_field_tag :email
   = submit_tag

@@ -1,5 +1,4 @@
 class PermissionsController < ApplicationController
-  require 'uri'
 
   def index
     # all rooms for which current user is an owner
@@ -13,12 +12,14 @@ class PermissionsController < ApplicationController
   end
 
   def create
-    # look up user by email
-    email = URI.parse(params[:email])
-    resp = Faraday.get "#{LOGIN_URL}users/#{email}.json"
-    raise resp.inspect
-    # Faraday.post "#{PERMISSIONS_URL}user_room_permission",
-    #               { user_token: self.user_token, room_id: self.id, owner: false}
+    room = Room.find(params[:room_id])
+    unless room.owned_by?(session[:user_token])
+      head :status => :unauthorized && return
+    end
+
+    user_info = UserInfo.get_by_email(params[:email])
+    room.create_permission_for(user_info.user_token)
+    redirect_to new_room_permission_url(room)
   end
 
   def edit
