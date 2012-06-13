@@ -1,0 +1,3 @@
+class RoomsPermission < ApplicationController
+
+end
