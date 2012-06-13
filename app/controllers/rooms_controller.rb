@@ -18,9 +18,9 @@ class RoomsController < ApplicationController
     params[:room][:user_token] = current_user.auth_token
     room = Room.create(params[:room])
     if Rails.env.production?
-      redirect_to "http://hackchat.in"
+      redirect_to CHAT
     else
-      redirect_to "http://localhost:2000"
+      redirect_to CHAT
     end
   end
 

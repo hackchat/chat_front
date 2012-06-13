@@ -37,19 +37,20 @@ jQuery ->
   VIMMode()
 
 VIMMode = ->
-  $("body").keypress (e) ->
-      if e.which == 49
-        $.namespace.handleRoomChange($(".room_change")[0].id, $(".room_change")[0].text)
-      if e.which == 50
-        $.namespace.handleRoomChange($(".room_change")[1].id, $(".room_change")[1].text)
-      if e.which == 105
-        $("#message_content").focus()
-        e.preventDefault()
-  $("body").keyup (e) ->
-    if e.which == 27
-      $("#message_content").blur()
-  $("#message_content").keypress (e) ->
-    e.stopPropagation()
+  if $("#chat").length
+    $("body").keypress (e) ->
+        if e.which == 49
+          $.namespace.handleRoomChange($(".room_change")[0].id, $(".room_change")[0].text)
+        if e.which == 50
+          $.namespace.handleRoomChange($(".room_change")[1].id, $(".room_change")[1].text)
+        if e.which == 105
+          $("#message_content").focus()
+          e.preventDefault()
+    $("body").keyup (e) ->
+      if e.which == 27
+        $("#message_content").blur()
+    $("#message_content").keypress (e) ->
+      e.stopPropagation()
 
 addOneMessage = (message) ->
   $('#chat').append Mustache.to_html($('#message_template').html(), message)
