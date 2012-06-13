@@ -18,12 +18,14 @@ gem 'rb-readline'
 gem "slim-rails"
 gem 'slim'
 group :development, :test do
+  gem 'quiet_assets'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'simplecov'
   gem 'capybara'
   gem 'launchy'
   gem 'debugger'
+  gem 'newrelic_rpm'
 end
 
 gem 'pygments.rb'

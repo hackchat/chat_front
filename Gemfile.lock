@@ -125,10 +125,13 @@ GEM
     multipart-post (1.1.5)
     mustache (0.99.4)
     mysql2 (0.3.11)
+    newrelic_rpm (3.3.5)
     nokogiri (1.5.2)
     polyglot (0.3.3)
     pygments.rb (0.2.12)
       rubypython (~> 0.5.3)
+    quiet_assets (1.0.1)
+      railties (~> 3.1)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -254,7 +257,9 @@ DEPENDENCIES
   launchy
   mustache
   mysql2
+  newrelic_rpm
   pygments.rb
+  quiet_assets
   rails (= 3.2.3)
   rb-readline
   redis
