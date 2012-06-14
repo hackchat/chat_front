@@ -1,4 +1,6 @@
-$.namespace = {
+class Room
+  constructor: ->
+    @faye or= new Faye.Client(FAYE_DOMAIN)
 
   getMessages: (room_id) ->
     $.getJSON("#{document.URL}messages.json?room_id=#{room_id}", @renderMessages)
@@ -8,40 +10,70 @@ $.namespace = {
       addOneMessage(message)
 
   fayeSubscribe: (room_id) =>
-    faye = new Faye.Client(FAYE_DOMAIN)
-    @sub = faye.subscribe("/messages/#{room_id}", (data) ->
+    @sub = @faye.subscribe("/messages/#{room_id}", (data) ->
                      addOneMessage(data)
                   )
+
   fayeUnsubscribe: (room_id) =>
     if @sub
-      @sub.callback ->
+      @sub.callback =>
         @sub.cancel()
 
-  handleRoomChange: (room_id, room_name) =>
+  changeRoomName: (room_name) =>
     $("#chat").html(" ")
     $("#room_name").text(room_name)
-    $.namespace.fayeUnsubscribe(room_id)
-    $.namespace.fayeSubscribe(room_id)
-    $.namespace.getMessages(room_id)
+
+  handleFaye: (room_id) =>
+    @fayeUnsubscribe(room_id)
+    @fayeSubscribe(room_id)
+    @handleRoomie(room_id)
+
+  handleRoomie: (room_id) =>
+    user = $('#current_user').attr("user-token")
+    $.post("/roomies", {room_id: room_id, user_token: user})
+    @unsubscribeRoomie(room_id, user)
+    @room_id = room_id
+    $.getJSON("#{document.URL}roomies/#{room_id}", @renderRoomies)
+
+  unsubscribeRoomie: (room_id, user) =>
+    if @old_room_id
+          $.ajax({
+            type: "DELETE",
+            url: "/roomies/#{@old_room_id}?user_token=#{user}",
+            })
+    @old_room_id = room_id
+
+  renderRoomies: (roomies) =>
+    $('.roomies').html("")
+    for roomie in roomies
+      addOneRoomie(roomie, @room_id)
+
+  handleRoomChange: (room_id, room_name) =>
+    @changeRoomName(room_name)
+    @handleFaye(room_id)
+    @getMessages(room_id)
     $("#message_room_id").val(room_id)
 
-}
 $("#new_message").live "ajax:complete", (event, xhr, status) ->
   $("#message_content").val ""
 
 jQuery ->
-  $(".room_change").click (e) ->
+  room = new Room
+  $(".room_change").click (e) =>
     e.preventDefault()
-    $.namespace.handleRoomChange($(this).attr('id'), $(this).text())
-  VIMMode()
+    room.handleRoomChange($(this).attr('id'), $(this).text())
+  VIMMode(room)
 
-VIMMode = ->
+# $(window).unload ->
+#   room.call_unsubscribe
+
+VIMMode = (room) ->
   if $("#chat").length
-    $("body").keypress (e) ->
+    $("body").keypress (e) =>
         if e.which == 49
-          $.namespace.handleRoomChange($(".room_change")[0].id, $(".room_change")[0].text)
+          room.handleRoomChange($(".room_change")[0].id, $(".room_change")[0].text)
         if e.which == 50
-          $.namespace.handleRoomChange($(".room_change")[1].id, $(".room_change")[1].text)
+          room.handleRoomChange($(".room_change")[1].id, $(".room_change")[1].text)
         if e.which == 105
           $("#message_content").focus()
           e.preventDefault()
@@ -54,3 +86,5 @@ VIMMode = ->
 addOneMessage = (message) ->
   $('#chat').append Mustache.to_html($('#message_template').html(), message)
   $("#chat").scrollTop(11000)
+addOneRoomie = (roomie, room_id) ->
+  $("##{room_id}").append Mustache.to_html($('#roomie_template').html(), roomie)

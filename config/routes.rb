@@ -3,5 +3,6 @@ Hackchat::Application.routes.draw do
   resources :rooms do
     resources :permissions
   end
+  resources :roomies
   root to: "rooms#index"
 end
