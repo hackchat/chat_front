@@ -11,8 +11,9 @@ class Room
       addOneMessage(message)
 
   fayeSubscribe: (room_id) =>
+    console.log @faye
     @sub = @faye.subscribe("/messages/#{room_id}", (data) ->
-                     @handleRoomie(room_id)
+
                      addOneMessage(data)
                   )
 
@@ -35,6 +36,9 @@ class Room
     @unsubscribeRoomie(room_id, user)
     @room_id = room_id
     $("#roomies").html("")
+    getRoomies(room_id)
+
+  getRoomies: (room_id) =>
     $.getJSON("#{document.URL}roomies/#{room_id}.json", @renderRoomies)
 
   unsubscribeRoomie: (room_id, user) =>
@@ -60,7 +64,7 @@ class Room
   addRoomHotKeys: (e) =>
     $.getJSON("#{document.URL}rooms.json", (rooms) =>
         for room_count in rooms
-          if _i == 10
+          if _i > 9
             return
           if e.which == (49 + _i)
             @handleRoomChange($(".room_change")[_i].id, $(".room_change")[_i].text)
