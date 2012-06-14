@@ -11,7 +11,7 @@ class Room
       addOneMessage(message)
 
   fayeSubscribe: (room_id) =>
-    @sub = @faye.subscribe("/messages/#{room_id}", (data) ->
+    @sub = @faye.subscribe("/messages/#{room_id}.json", (data) ->
                      addOneMessage(data)
                   )
 
@@ -33,7 +33,7 @@ class Room
     $.post("/roomies", {room_id: room_id, user_token: user})
     @unsubscribeRoomie(room_id, user)
     @room_id = room_id
-    $.getJSON("#{document.URL}roomies/#{room_id}", @renderRoomies)
+    $.getJSON("#{document.URL}roomies/#{room_id}.json", @renderRoomies)
 
   unsubscribeRoomie: (room_id, user) =>
     if @old_room_id
