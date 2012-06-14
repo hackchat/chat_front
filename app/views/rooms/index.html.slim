@@ -1,16 +1,16 @@
-.row.fluid.well.span10#big_well
+.row.fluid.well.span12#big_well
   .well.span2#chats_list
     h2 Rooms
     - @rooms.each do |room|
-      .well= link_to room.name, nil, class: "room_change", id: "#{room.id}"
+      .room_name_well= link_to room.name, nil, class: "room_change", id: "#{room.id}"
 
   .row
     .well.span3#roomies
       h3 People in this room
 
-  .well.span6.chat_client
+  .well.span9.chat_client
     h1#room_name
-    #chat
+    .well.span8#chat
     script#message_template type="text/html"
       .message.row.span5.well.chat_well
         .span1
@@ -35,3 +35,12 @@
     .row.span5
       | {{name}}
       img(src="{{avatar}}")
+
+  .well.span2
+  .well.span6#enter
+    = simple_form_for(Message.new, remote: true) do |f|
+      = f.input "content", :placeholder => "Enter Chat...", id: "chat_entry_box"
+      = f.select :language, PYGMENTS_LANGUAGES, selected: "Plain Text"
+      = f.input "room_id", as: :hidden
+      br
+      = f.submit "CHAT!", class: "btn btn-info"

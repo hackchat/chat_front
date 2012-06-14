@@ -11,10 +11,12 @@ module ApplicationHelper
   end
 
   def current_room_permissions
-    resp = Faraday.get "#{PERMISSIONS_URL}users/#{session[:user_token]}.json"
+    url = "#{PERMISSIONS_URL}users/#{session[:user_token]}.json"
+    #url = "http://0.0.0.0:5000/users/#{session[:user_token]}.json"
+    resp = Faraday.get url
     perms = JSON.parse(resp.body)
     perms.collect do |perm|
-      Hashie::Mash.new(perm)
+     Hashie::Mash.new(perm)
     end
   end
 end

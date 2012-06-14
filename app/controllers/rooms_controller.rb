@@ -5,6 +5,7 @@ class RoomsController < ApplicationController
     @rooms = current_room_permissions.collect do |room_perm|
                Room.find(room_perm.room_id)
              end
+    # @rooms = []
   end
 
   def new
