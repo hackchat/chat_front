@@ -33,6 +33,7 @@ class Room
     $.post("/roomies", {room_id: room_id, user_token: user})
     @unsubscribeRoomie(room_id, user)
     @room_id = room_id
+    $("#roomies").html("")
     $.getJSON("#{document.URL}roomies/#{room_id}.json", @renderRoomies)
 
   unsubscribeRoomie: (room_id, user) =>
@@ -57,6 +58,8 @@ class Room
   addRoomHotKeys: (e) =>
     $.getJSON("#{document.URL}rooms.json", (rooms) =>
         for room_count in rooms
+          if _i == 10
+            return
           if e.which == (49 + _i)
             @handleRoomChange($(".room_change")[_i].id, $(".room_change")[_i].text)
       )
@@ -82,6 +85,8 @@ VIMMode = (room) ->
       if e.which == 27
         $("#message_content").blur()
     $("#message_content").keypress (e) ->
+      console.log e
+      # 13 = enter
       e.stopPropagation()
 
 addOneMessage = (message) ->
@@ -89,4 +94,4 @@ addOneMessage = (message) ->
   $("#chat").scrollTop(11000)
 
 addOneRoomie = (roomie, room_id) ->
-  $("##{room_id}").append Mustache.to_html($('#roomie_template').html(), roomie)
+  $("#roomies").append Mustache.to_html($('#roomie_template').html(), roomie)
