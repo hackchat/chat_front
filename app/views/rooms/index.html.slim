@@ -12,6 +12,8 @@
     h3 Upload a file
     br
     form#file_upload*{multipart: true, remote: true}
+      = hidden_field_tag :user_token, current_user.user_token, id: 'upload_user_token'
+      = hidden_field_tag :room_id, '', id: 'upload_room_id'
       = file_field_tag :file
       br
       a.btn.btn-info#upload_file
@@ -23,6 +25,6 @@
       = f.select :language, PYGMENTS_LANGUAGES, selected: "Plain Text"
       = f.input "room_id", as: :hidden
       br
-      = f.submit "CHAT!", class: "btn btn-info"
+      = f.submit "send", class: "btn btn-info"
 
 = render partial: "layouts/mustache"
