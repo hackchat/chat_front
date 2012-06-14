@@ -4,6 +4,10 @@
     - @rooms.each do |room|
       .well= link_to room.name, nil, class: "room_change", id: "#{room.id}"
 
+  .row
+    .well.span3#roomies
+      h3 People in this room
+
   .well.span6.chat_client
     h1#room_name
     #chat
@@ -25,3 +29,9 @@
           = f.input "room_id", as: :hidden
           br
           = f.submit "CHAT!", class: "btn btn-info"
+
+.row
+  script#roomie_template type="text/html"
+    .row.span5
+      | {{name}}
+      img(src="{{avatar}}")
