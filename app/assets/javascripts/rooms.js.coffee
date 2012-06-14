@@ -41,6 +41,7 @@ class Room
             url: "/roomies/#{@old_room_id}?user_token=#{user}",
             })
     @old_room_id = room_id
+
   renderRoomies: (roomies) =>
     for roomie in roomies
       addOneRoomie(roomie)
@@ -54,14 +55,15 @@ class Room
 $("#new_message").live "ajax:complete", (event, xhr, status) ->
   $("#message_content").val ""
 
-$(window).unload ->
-  alert "BOOM"
 jQuery ->
   room = new Room
   $(".room_change").click (e) =>
     e.preventDefault()
     room.handleRoomChange($(this).attr('id'), $(this).text())
   VIMMode(room)
+
+# $(window).unload ->
+#   room.call_unsubscribe
 
 VIMMode = (room) ->
   if $("#chat").length
