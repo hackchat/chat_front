@@ -1,0 +1,14 @@
+script#roomie_template type="text/html"
+  .row.span5.roomies
+    | {{name}}
+    img(src="{{avatar}}" class="gravatar")
+
+script#message_template type="text/html"
+  .message.row.span7.well.chat_well
+    .span7
+      .span1
+        img(class="gravatar" src="{{avatar}}")
+        strong
+          | {{name}}
+      .span5
+        | {{{content}}}

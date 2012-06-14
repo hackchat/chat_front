@@ -5,7 +5,8 @@ class Room
   getMessages: (room_id) ->
     $.getJSON("#{document.URL}messages.json?room_id=#{room_id}", @renderMessages)
 
-  renderMessages: (messages) =>
+  renderMessages: (messages) ->
+    $("#chat").html(" ")
     for message in messages
       addOneMessage(message)
 
@@ -20,7 +21,6 @@ class Room
         @sub.cancel()
 
   changeRoomName: (room_name) =>
-    $("#chat").html(" ")
     $("#room_name").text(room_name)
 
   handleFaye: (room_id) =>
@@ -54,29 +54,30 @@ class Room
     @getMessages(room_id)
     $("#message_room_id").val(room_id)
 
+  addRoomHotKeys: (e) =>
+    $.getJSON("#{document.URL}rooms.json", (rooms) =>
+        for room_count in rooms
+          if e.which == (49 + _i)
+            @handleRoomChange($(".room_change")[_i].id, $(".room_change")[_i].text)
+      )
+
 $("#new_message").live "ajax:complete", (event, xhr, status) ->
   $("#message_content").val ""
 
 jQuery ->
   room = new Room
-  $(".room_change").click (e) =>
+  $(".room_change").click (e) ->
     e.preventDefault()
     room.handleRoomChange($(this).attr('id'), $(this).text())
   VIMMode(room)
 
-# $(window).unload ->
-#   room.call_unsubscribe
-
 VIMMode = (room) ->
   if $("#chat").length
     $("body").keypress (e) =>
-        if e.which == 49
-          room.handleRoomChange($(".room_change")[0].id, $(".room_change")[0].text)
-        if e.which == 50
-          room.handleRoomChange($(".room_change")[1].id, $(".room_change")[1].text)
-        if e.which == 105
-          $("#message_content").focus()
-          e.preventDefault()
+      room.addRoomHotKeys(e)
+      if e.which == 105
+        $("#message_content").focus()
+        e.preventDefault()
     $("body").keyup (e) ->
       if e.which == 27
         $("#message_content").blur()
@@ -86,5 +87,6 @@ VIMMode = (room) ->
 addOneMessage = (message) ->
   $('#chat').append Mustache.to_html($('#message_template').html(), message)
   $("#chat").scrollTop(11000)
+
 addOneRoomie = (roomie, room_id) ->
   $("##{room_id}").append Mustache.to_html($('#roomie_template').html(), roomie)
