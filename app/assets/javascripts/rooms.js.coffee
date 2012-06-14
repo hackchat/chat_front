@@ -12,6 +12,7 @@ class Room
 
   fayeSubscribe: (room_id) =>
     @sub = @faye.subscribe("/messages/#{room_id}", (data) ->
+                     handleRoomie(room_id)
                      addOneMessage(data)
                   )
 
@@ -69,11 +70,17 @@ class Room
 
 $("#new_message").live "ajax:complete", (event, xhr, status) ->
   $("#message_content").val ""
+  $("#message_language").val("Plain Text")
 
 $(window).load ->
   room = new Room
   first_room = $(".room_change").first()
-  room.handleRoomChange(first_room.attr('id'), first_room.text()) if first_room
+  if first_room.length
+    room.handleRoomChange(first_room.attr('id'), first_room.text())
+  else
+    $(".chat_client").html("<h1>You aren't a part of any rooms yet.</h1>")
+    $("#enter").html("")
+    $(".file_upload").html("")
 
 jQuery ->
   room = new Room

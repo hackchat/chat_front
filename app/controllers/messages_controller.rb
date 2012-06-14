@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_filter :require_login, only: [:create]
 
   def index
-    @messages = Message.find_all_by_room_id(params[:room_id])
+    @messages = Message.where(room_id: params[:room_id]).limit(100)
   end
 
   def create

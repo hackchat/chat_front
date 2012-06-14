@@ -1,7 +1,6 @@
 module ApplicationHelper
 
   def current_user
-    puts "#{LOGIN_URL}users/#{session[:user_token]}.json"
     resp = Faraday.get "#{LOGIN_URL}users/#{session[:user_token]}.json"
     Hashie::Mash.new(JSON.parse(resp.body))
   end
