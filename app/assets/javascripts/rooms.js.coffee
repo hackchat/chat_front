@@ -32,6 +32,7 @@ class Room
     user = $('#current_user').attr("user-token")
     $.post("/roomies", {room_id: room_id, user_token: user})
     @unsubscribeRoomie(room_id, user)
+    @room_id = room_id
     $.getJSON("#{document.URL}roomies/#{room_id}", @renderRoomies)
 
   unsubscribeRoomie: (room_id, user) =>
@@ -43,8 +44,9 @@ class Room
     @old_room_id = room_id
 
   renderRoomies: (roomies) =>
+    $('.roomies').html("")
     for roomie in roomies
-      addOneRoomie(roomie)
+      addOneRoomie(roomie, @room_id)
 
   handleRoomChange: (room_id, room_name) =>
     @changeRoomName(room_name)
@@ -84,5 +86,5 @@ VIMMode = (room) ->
 addOneMessage = (message) ->
   $('#chat').append Mustache.to_html($('#message_template').html(), message)
   $("#chat").scrollTop(11000)
-addOneRoomie = (roomie) ->
-  $('#chat').append Mustache.to_html($('#roomie_template').html(), roomie)
+addOneRoomie = (roomie, room_id) ->
+  $("##{room_id}").append Mustache.to_html($('#roomie_template').html(), roomie)
