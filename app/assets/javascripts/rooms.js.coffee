@@ -86,9 +86,9 @@ VIMMode = (room) ->
         $("#message_content").blur()
     $("#message_content").keypress (e) ->
       if (e.which == 13 && e.shiftKey == true)
-        alert "SHIFT ENTER"
+        # alert "SHIFT ENTER"
       else if (e.which == 13 && e.shiftKey == false)
-        alert "ENTER"
+        $("#new_message").submit()
 
       e.stopPropagation()
 
