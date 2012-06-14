@@ -3,6 +3,11 @@
     h2 Rooms
     - @rooms.each do |room|
       .room_name_well= link_to room.name, nil, class: "room_change", id: "#{room.id}"
+    .row
+      script#roomie_template type="text/html"
+        .row.span5
+          | {{name}}
+          img(src="{{avatar}}")
 
   .well.span9.chat_client
     h1#room_name
