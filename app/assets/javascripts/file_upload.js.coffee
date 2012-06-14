@@ -7,7 +7,6 @@ $ ->
     type = file.type
 
   $('#upload_file').click ->
-    console.log $('form')[0][0]
     data =  new FormData $('form')[0]
     $.ajax({
       type: 'POST',
