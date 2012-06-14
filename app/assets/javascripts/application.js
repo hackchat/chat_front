@@ -16,4 +16,9 @@
 //= require_tree .
 //= require rooms
 //= require mustache
-var FAYE_DOMAIN = "http://hackchat.dev:9292/faye"
+if (document.url == "http://hackchat.dev/") {
+  var FAYE_DOMAIN = "http://hackchat.dev:9292/faye";
+}
+else {
+  var FAYE_DOMAIN = "http://hackchat.in:9292/faye";
+}
