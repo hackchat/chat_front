@@ -13,9 +13,6 @@
  *= require solarized-light
 */
 
-$tumblred: #C10000;
-$turquise: #1DCAC0;
-$tumblrfont: #4F4F4F;
 $base03:    #002b36;
 $base02:    #073642;
 $base01:    #586e75;
@@ -50,7 +47,7 @@ body {
   min-height: 20px;
   padding: 5px, 19px, 5px, 19px;
   margin-bottom: 20px;
-  background-color: $base2;
+  background-color: $base1;
   border: 1px solid #eee;
   border: 1px solid rgba(0, 0, 0, 0.05);
   -webkit-border-radius: 4px;
@@ -66,12 +63,12 @@ body {
 }
 
 .chat_client{
-  background-color: $base01 !important;
+  background-color: $base2 !important;
   height:510px;
 }
 
 #chats_list{
-  background-color: $red !important;
+  background-color: $base2 !important;
   margin-left: 15px;
   height:510px;
   border: 0px solid #eee;
@@ -102,14 +99,17 @@ body {
   height: 30px;
 }
 
+.file_upload{
+  background-color: $base2 !important;
+}
+
 .chat_content{
   margin-left: -40px;
 }
 
-/*#enter{
-  margin-left: 235px;
-  background-color: #657b83 !important;
-}*/
+#enter{
+  background-color: $base2 !important;
+}
 
 #individual_chat_room{
   margin-left:-10px;
@@ -156,7 +156,7 @@ body {
 
 .room_change{
   font-size: 16px;
-  color:$yellow !important;
+  color:$red !important;
   margin-left: 5px;
 }
 

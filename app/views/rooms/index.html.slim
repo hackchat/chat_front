@@ -1,4 +1,4 @@
-.row.fluid.well.span12#big_well
+.row.well.span12#big_well
   .well.span2#chats_list
     h2 Rooms
     - @rooms.each do |room|
@@ -16,8 +16,16 @@
               | {{name}}
           .span5
             | {{{content}}}
-  .well.span2
-  .well.span6#enter
+  .well.span2.file_upload
+    h3 Upload a file
+    br
+    form#file_upload*{multipart: true, remote: true}
+      = file_field_tag :file
+      br
+      a.btn.btn-info#upload_file
+        | Upload File
+
+  .well.span9#enter
     = simple_form_for(Message.new, remote: true) do |f|
       = f.input "content", :placeholder => "Enter Chat...", id: "chat_entry_box"
       = f.select :language, PYGMENTS_LANGUAGES, selected: "Plain Text"
