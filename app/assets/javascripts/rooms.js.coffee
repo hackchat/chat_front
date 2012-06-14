@@ -11,7 +11,7 @@ class Room
       addOneMessage(message)
 
   fayeSubscribe: (room_id) =>
-    @sub = @faye.subscribe("/messages/#{room_id}.json", (data) ->
+    @sub = @faye.subscribe("/messages/#{room_id}", (data) ->
                      addOneMessage(data)
                   )
 
@@ -33,6 +33,7 @@ class Room
     $.post("/roomies", {room_id: room_id, user_token: user})
     @unsubscribeRoomie(room_id, user)
     @room_id = room_id
+    $("#roomies").html("")
     $.getJSON("#{document.URL}roomies/#{room_id}.json", @renderRoomies)
 
   unsubscribeRoomie: (room_id, user) =>
@@ -58,6 +59,8 @@ class Room
   addRoomHotKeys: (e) =>
     $.getJSON("#{document.URL}rooms.json", (rooms) =>
         for room_count in rooms
+          if _i == 10
+            return
           if e.which == (49 + _i)
             @handleRoomChange($(".room_change")[_i].id, $(".room_change")[_i].text)
       )
@@ -66,6 +69,11 @@ class Room
 
 $("#new_message").live "ajax:complete", (event, xhr, status) ->
   $("#message_content").val ""
+
+$(window).load ->
+  room = new Room
+  first_room = $(".room_change").first()
+  room.handleRoomChange(first_room.attr('id'), first_room.text()) if first_room
 
 jQuery ->
   room = new Room
@@ -85,6 +93,9 @@ VIMMode = (room) ->
       if e.which == 27
         $("#message_content").blur()
     $("#message_content").keypress (e) ->
+      if (e.which == 13 && e.shiftKey == false)
+        $("#new_message").submit()
+
       e.stopPropagation()
 
 addOneMessage = (message) ->
@@ -92,4 +103,4 @@ addOneMessage = (message) ->
   $("#chat").scrollTop(11000)
 
 addOneRoomie = (roomie, room_id) ->
-  $("##{room_id}").append Mustache.to_html($('#roomie_template').html(), roomie)
+  $("#roomies").append Mustache.to_html($('#roomie_template').html(), roomie)
