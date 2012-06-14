@@ -1,3 +1,5 @@
+BASE_URL = 'hackchat.dev'
+
 $ ->
 
   $(':file').change ->
@@ -8,14 +10,18 @@ $ ->
 
   $('#upload_file').click ->
     data =  new FormData $('form')[0]
+    form = $('#file_upload')
+    console.log form
+    data =  new FormData form
     $.ajax({
       type: 'POST',
-      url: '/uploader',
+      url: "http://files.#{BASE_URL}/uploader",
       data: data,
       cache: false,
-      contentType: false,
-      processData: false
-      })
+      contentType: 'multipart/alternative',
+      processData: false,
+      crossDomain: true
+    })
 
   progressHandlingFunction = (e) ->
     if(e.lengthComputable)

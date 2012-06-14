@@ -53,6 +53,7 @@ class Room
     @changeRoomName(room_name)
     @handleFaye(room_id)
     @getMessages(room_id)
+    @updateFileUploadForm(room_id)
     $("#message_room_id").val(room_id)
 
   addRoomHotKeys: (e) =>
@@ -63,6 +64,8 @@ class Room
           if e.which == (49 + _i)
             @handleRoomChange($(".room_change")[_i].id, $(".room_change")[_i].text)
       )
+  updateFileUploadForm: (room_id) =>
+    $('#upload_room_id').val room_id
 
 $("#new_message").live "ajax:complete", (event, xhr, status) ->
   $("#message_content").val ""
