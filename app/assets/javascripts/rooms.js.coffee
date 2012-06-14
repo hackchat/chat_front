@@ -12,7 +12,7 @@ class Room
 
   fayeSubscribe: (room_id) =>
     @sub = @faye.subscribe("/messages/#{room_id}", (data) ->
-                     handleRoomie(room_id)
+                     @handleRoomie(room_id)
                      addOneMessage(data)
                   )
 
