@@ -11,7 +11,7 @@ class Room
       addOneMessage(message)
 
   fayeSubscribe: (room_id) =>
-    @sub = @faye.subscribe("/messages/#{room_id}.json", (data) ->
+    @sub = @faye.subscribe("/messages/#{room_id}", (data) ->
                      addOneMessage(data)
                   )
 
@@ -85,8 +85,11 @@ VIMMode = (room) ->
       if e.which == 27
         $("#message_content").blur()
     $("#message_content").keypress (e) ->
-      console.log e
-      # 13 = enter
+      if (e.which == 13 && e.shiftKey == true)
+        alert "SHIFT ENTER"
+      else if (e.which == 13 && e.shiftKey == false)
+        alert "ENTER"
+
       e.stopPropagation()
 
 addOneMessage = (message) ->
