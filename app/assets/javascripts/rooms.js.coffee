@@ -67,6 +67,11 @@ class Room
 $("#new_message").live "ajax:complete", (event, xhr, status) ->
   $("#message_content").val ""
 
+$(window).load ->
+  room = new Room
+  first_room = $(".room_change").first()
+  room.handleRoomChange(first_room.attr('id'), first_room.text()) if first_room
+
 jQuery ->
   room = new Room
   $(".room_change").click (e) ->
@@ -85,9 +90,7 @@ VIMMode = (room) ->
       if e.which == 27
         $("#message_content").blur()
     $("#message_content").keypress (e) ->
-      if (e.which == 13 && e.shiftKey == true)
-        # alert "SHIFT ENTER"
-      else if (e.which == 13 && e.shiftKey == false)
+      if (e.which == 13 && e.shiftKey == false)
         $("#new_message").submit()
 
       e.stopPropagation()
