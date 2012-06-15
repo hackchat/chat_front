@@ -28,5 +28,19 @@
       = f.input "room_id", as: :hidden
       br
       = f.submit "send", class: "btn btn-info"
+      a.btn data-toggle="modal" href="#myModal" style="float:right;" Shortcuts
 
 = render partial: "layouts/mustache"
+
+#myModal.modal.hide
+  .modal-header
+    button.close data-dismiss="modal" type="button"
+    h3 Chat Shortcuts
+  .modal-body
+    p (1-9) to join different chat rooms
+    p (i) to start typing
+    p (esc) to quit typing
+    p (enter) to submit the chat
+    p (shift + enter) to give a new line
+  .modal-footer
+    a.btn data-dismiss="modal" href="#" Close
