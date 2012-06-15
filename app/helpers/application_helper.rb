@@ -10,12 +10,4 @@ module ApplicationHelper
     Hashie::Mash.new(JSON.parse(resp.body))
   end
 
-  def current_room_permissions
-    url = "#{PERMISSIONS_URL}users/#{session[:user_token]}.json"
-    resp = Faraday.get url
-    perms = JSON.parse(resp.body)
-    perms.collect do |perm|
-     Hashie::Mash.new(perm)
-    end
-  end
 end

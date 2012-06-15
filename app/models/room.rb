@@ -17,4 +17,17 @@ class Room < ActiveRecord::Base
     resp.status == 201
   end
 
+  def self.find_rooms_for(user)
+    room_permissions = user_room_permissions(user).map(&:room_id)
+    Room.where{id.in(room_permissions)}
+  end
+
+  def self.user_room_permissions(user)
+    resp = Faraday.get "#{PERMISSIONS_URL}users/#{user}.json"
+    perms = JSON.parse(resp.body)
+    perms.collect do |perm|
+     Hashie::Mash.new(perm)
+    end
+  end
+
 end

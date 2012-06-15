@@ -13,8 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+
+//= require models/message
+//= require models/roomie
+//= require models/subscribe
+//= require models/room
+
 //= require_tree .
-//= require rooms
 //= require mustache
 if (document.URL == "http://hackchat.dev/") {
   var FAYE_DOMAIN = "http://hackchat.dev:9292/faye";

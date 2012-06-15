@@ -1,7 +1,11 @@
 class RoomiesController < ApplicationController
 
+  def index
+    @roomies = Roomie.find_all_by_room_id(params[:room_id])
+  end
+
   def show
-    @roomies = Roomie.find_all_by_room_id(params[:id])
+    @roomie = Roomie.find(params[:id])
   end
 
   def create
