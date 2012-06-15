@@ -18,6 +18,9 @@ $(window).load ->
     $("#enter").html("")
     $(".file_upload").html("")
 
+$(window).unload ->
+  roomie = new Roomie({ room_id: $("#message_room_id").val(), user_token: $('#current_user').attr("user-token") })
+  roomie.unsubscribe($('#current_user').attr("user-token"))
 
 VIMMode =  ->
   if $("#chat").length

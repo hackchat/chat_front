@@ -10,12 +10,13 @@ class Message
   renderMessage: =>
     $('#chat').append Mustache.to_html($('#message_template').html(), this)
     $("#chat").scrollTop(11000)
+    $('.pac-man-messages').remove() if $('.pac-man-messages')
 
   @getMessages: (room_id) ->
     $.getJSON("#{document.URL}messages.json?room_id=#{room_id}", @renderMessages)
 
   @renderMessages: (messages) ->
-    $("#chat").html(" ")
+    $("#chat").html("<img src='/ajax-loader.gif' class='pac-man-messages'>")
     for message in messages
       msg = new Message(message)
       msg.renderMessage()

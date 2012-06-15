@@ -14,7 +14,8 @@ class RoomiesController < ApplicationController
   end
 
   def destroy
-    Roomie.find_by_user_token_and_room_id(params[:user_token], params[:id])
+    roomie = Roomie.find_by_user_token(params[:id])
+    roomie.destroy if roomie
     render json: "DERP"
   end
 
