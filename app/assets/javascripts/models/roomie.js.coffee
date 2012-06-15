@@ -5,6 +5,7 @@ class Roomie
     @avatar = params.avatar
     @name = params.name
     @user_token = params.user_token
+    $.ajaxSetup( { async:false } )
 
   renderRoomie: =>
     unless $("##{@user_token}").attr("id")
@@ -16,7 +17,7 @@ class Roomie
                           room_id: @room_id,
                           user_token: @user_token,
                           name: @name,
-                          avatar: @avatar
+                          avatar: @avatar,
                         }
 
   unsubscribe: (user_token) =>
