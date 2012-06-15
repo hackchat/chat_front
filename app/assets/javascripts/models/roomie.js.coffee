@@ -29,10 +29,12 @@ class Roomie
       roomie.renderRoomie()
 
   @handleRoomie: (room_id, user_token) ->
+    clearInterval(@roomieChecker) if @roomieChecker
     $("#roomies").html("<img src='/ajax-loader.gif' class='pac-man-roomies'>")
     roomie = new Roomie({ room_id: room_id, user_token: user_token })
     roomie.unsubscribe(user_token)
     roomie.subscribe()
     Roomie.fetch(room_id)
+    @roomieChecker = setInterval("Roomie.fetch(#{room_id})",10000)
 
 window.Roomie = Roomie
