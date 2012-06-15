@@ -33,6 +33,6 @@ class Roomie
     roomie.unsubscribe() if @old_room_id
     roomie.subscribe()
     Roomie.fetch(room_id)
-    setInterval("Roomie.fetch(#{room_id})",100000)
+    setInterval("Roomie.fetch(#{room_id})",10000)
 
 window.Roomie = Roomie
