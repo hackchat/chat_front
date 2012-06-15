@@ -21,7 +21,8 @@ class Roomie
       })
 
   @fetch: (room_id) ->
-    $.getJSON("#{document.URL}roomies?room_id=#{room_id}.json", @renderRoomies)
+    console.log "#{document.URL}roomies?room_id=#{room_id}.json"
+    $.getJSON("#{document.URL}roomies.json?room_id=#{room_id}", @renderRoomies)
 
   @renderRoomies: (objs) =>
     for obj in objs
