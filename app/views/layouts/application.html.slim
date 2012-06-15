@@ -6,7 +6,7 @@ html
     = javascript_include_tag "application", "#{FAYE_DOMAIN}/faye.js"
     = csrf_meta_tags
   body
-    #current_user(user-token="#{current_user.user_token}")
+    #current_user(user-token="#{current_user.user_token}" avatar="#{current_user.avatar}" name="#{current_user.first_name} #{current_user.last_name[0]}.")
     #faye_server(faye-address="#{FAYE_DOMAIN}")
     .navbar.navbar-fixed-top
       .navbar-inner

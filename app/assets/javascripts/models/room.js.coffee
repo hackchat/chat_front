@@ -3,7 +3,11 @@ class Room
   constructor: (room_id, room_name) ->
     @room_id = room_id
     @room_name = room_name
-    @user = $('#current_user').attr("user-token")
+    @user = {
+             user_token: $('#current_user').attr("user-token"),
+             avatar: $('#current_user').attr("avatar"),
+             name: $('#current_user').attr("name")
+            }
 
   changeRoomName: =>
     $("#room_name").text(@room_name)

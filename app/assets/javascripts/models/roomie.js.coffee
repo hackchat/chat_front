@@ -2,9 +2,9 @@ class Roomie
 
   constructor: (params) ->
     @room_id = params.room_id
-    @user_token = params.user_token
     @avatar = params.avatar
     @name = params.name
+    @user_token = params.user_token
 
   renderRoomie: =>
     unless $("##{@user_token}").attr("id")
@@ -12,7 +12,12 @@ class Roomie
     $('.pac-man-roomies').remove() if $('.pac-man-roomies')
 
   subscribe:  =>
-    $.post("/roomies", {room_id: @room_id, user_token: @user_token})
+    $.post "/roomies", {
+                          room_id: @room_id,
+                          user_token: @user_token,
+                          name: @name,
+                          avatar: @avatar
+                        }
 
   unsubscribe: (user_token) =>
     $.ajax({
@@ -21,7 +26,6 @@ class Roomie
       })
 
   @fetch: (room_id) ->
-    console.log "#{document.URL}roomies?room_id=#{room_id}.json"
     $.getJSON("#{document.URL}roomies.json?room_id=#{room_id}", @renderRoomies)
 
   @renderRoomies: (objs) =>
@@ -29,11 +33,11 @@ class Roomie
       roomie = new Roomie(obj)
       roomie.renderRoomie()
 
-  @handleRoomie: (room_id, user_token) ->
+  @handleRoomie: (room_id, user) ->
     clearInterval(@roomieChecker) if @roomieChecker
     $("#roomies").html("<img src='/ajax-loader.gif' class='pac-man-roomies'>")
-    roomie = new Roomie({ room_id: room_id, user_token: user_token })
-    roomie.unsubscribe(user_token)
+    roomie = new Roomie({ room_id: room_id, avatar: user.avatar, name: user.name, user_token: user.user_token })
+    roomie.unsubscribe(user.user_token)
     roomie.subscribe()
     Roomie.fetch(room_id)
     @roomieChecker = setInterval("Roomie.fetch(#{room_id})",10000)

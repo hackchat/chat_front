@@ -9,7 +9,11 @@ class RoomiesController < ApplicationController
   end
 
   def create
-    roomie = Roomie.create(user_token: params[:user_token], room_id: params[:room_id])
+    roomie = Roomie.create(user_token: params[:user_token],
+                           room_id: params[:room_id],
+                           name: params[:name],
+                           avatar: params[:avatar]
+                          )
     render json: roomie.to_json
   end
 
