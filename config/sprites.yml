@@ -1,0 +1,24 @@
+# defines the base configuration options (file paths, etc, default style, etc)
+
+config:
+  style: css
+  style_output_path: stylesheets/sprites
+  image_output_path: images/sprites/
+  image_source_path: images/sprites/
+  public_path: public/
+  sprites_class: 'sprites'
+  class_separator: '-'
+  default_format: gif
+  default_spacing: 50
+
+# defines what sprite collections get created
+images:
+
+  # creates a public/images/sprites/hack_logos.gif image with 2 sprites in it
+  - name: hack_logos
+    format: gif
+    align: horizontal
+    spaced_by: 50
+    sources:
+      - icons/sprites/hack-icons/Hackchat_200_White.gif
+      - icons/sprites/hack-icons/Hackchat_201_Black.gif

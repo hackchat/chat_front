@@ -1,0 +1,22 @@
+.sprites.blue-stars-small {
+  background: url('/images/icons/blue-stars/small.png');
+  background-repeat:no-repeat;
+  background-position:0px 0px;
+  width: 12px;
+  height: 6px;
+}
+.sprites.blue-stars-medium {
+  background: url('/images/icons/blue-stars/medium.png') no-repeat 0px 6px;
+  width: 30px;
+  height: 15px;
+}
+.sprites.blue-stars-large {
+  background: url('/images/icons/blue-stars/large.png') no-repeat 0px 21px;
+  width: 60px;
+  height: 30px;
+}
+.sprites.blue-stars-xlarge {
+  background: url('/images/icons/blue-stars/xlarge.png') no-repeat 0px 96px;
+  width: 100px;
+  height: 75px;
+}

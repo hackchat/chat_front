@@ -1,0 +1,14 @@
+.sprites.hack-icons-Hackchat_200_White {
+  background: url('/images/hack-icons.png');
+  background-repeat:no-repeat;
+  background-position:0px 0px;
+  width: 200px;
+  height: 54px;
+}
+.sprites.hack-icons-Hackchat_200_White:hover {
+  background: url('/images/hack-icons.png');
+  background-repeat:no-repeat;
+  background-position:0px -54px;
+  width: 200px;
+  height: 54px;
+}
