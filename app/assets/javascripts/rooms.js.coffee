@@ -15,8 +15,8 @@ $(window).load ->
     $(".room_change").first().click()
   else
     $(".chat_client").html("<h1>You aren't a part of any rooms yet.</h1>")
-    $("#enter").html("")
-    $(".file_upload").html("")
+    $("#enter").html("").hide()
+    $(".file_upload").html("").hide()
 
 # (window).bind 'beforeunload' ->
 #   roomie = new Roomie({ room_id: $("#message_room_id").val(), user_token: $('#current_user').attr("user-token") })

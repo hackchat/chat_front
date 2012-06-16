@@ -1,7 +1,7 @@
-h1 Create Room
-p Create a new room!
-
-= form_tag rooms_path do
-  = text_field_tag "room[name]"
+.well.span3.create_room
+  h1 Create Room
   br
-  = submit_tag "CREATE!"
+  = form_tag rooms_path do
+    = text_field_tag "room[name]"
+    br
+    = submit_tag "CREATE!", class: "btn", class: "btn-info"

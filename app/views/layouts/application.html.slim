@@ -11,9 +11,9 @@ html
     .navbar.navbar-fixed-top
       .navbar-inner
         .container-fluid#navbar-container
-          .brand href="http://www.campfirenow.com"
+          .brand
             = image_tag "https://dl.dropbox.com/u/71404227/HackChatLogo.gif", class: "logo"
-          a.pull-right href="#{LOGIN_URL}logout"Logout
+          a.pull-right.btn.btn-info.logout href="#{LOGIN_URL}logout"Logout
 
-    .container-fluid
+    .container
       = yield

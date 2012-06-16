@@ -39,14 +39,15 @@ a {
 }
 
 body {
-  background-color: $cyan !important;
+  background-color: $base03 !important;
   font-family: "Lucida Console", "Lucida Sans Typewriter", Monaco, "Bitstream Vera Sans Mono", monospace !important;
+  width:960px;
 }
 
 .room_name_well {
   min-height: 20px;
-  padding: 5px, 19px, 5px, 19px;
-  margin-bottom: 20px;
+  padding: 8px;
+  margin-bottom: 16px;
   background-color: $base1;
   border: 1px solid #eee;
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -80,7 +81,7 @@ body {
   padding: -20px;
   margin-left: -25px;
   margin-top: 5px;
-  width: 600px;
+  width: 800px;
   word-wrap: break-word;
 }
 
@@ -88,7 +89,9 @@ body {
   background-color: white !important;
   margin-right: 5px;
   margin-left: -5px;
-  height: 435px;
+  margin-bottom: 15px;
+  height: 425px;
+  width:825;
   overflow: scroll;
 }
 
@@ -102,6 +105,7 @@ body {
 
 .file_upload{
   background-color: $base2 !important;
+  height: 170px;
 }
 
 .chat_content{
@@ -110,6 +114,7 @@ body {
 
 #enter{
   background-color: $base2 !important;
+  height: 170px;
 }
 
 #individual_chat_room{
@@ -130,8 +135,8 @@ body {
 
 
 .logo{
-  width: 80px;
-  margin-left: 85px;
+  width: 120px;
+  margin-left: 20px;
 }
 
 .navbar.navbar-fixed-top{
@@ -142,17 +147,13 @@ body {
   background-color: $red !important;
 }
 
-#big_well{
-
-}
-
 
 #room_name{
   margin-bottom: 10px;
 }
 #message_content{
   width:98%;
-  height:50px;
+  height:30px;
 }
 
 .room_change{
@@ -164,7 +165,15 @@ body {
   height:50px;
   width:1090px;
   display:block;
-  background-color: $base2 !important;
+  background-color: $base1 !important;
 }
 
+.logout {
+  margin-right:60px;
+}
+
+.create_room{
+  margin-left:480px !important;
+  margin-top: 35px !important;
+}
 
