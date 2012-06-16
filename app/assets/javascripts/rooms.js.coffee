@@ -65,7 +65,8 @@ class Room
             @handleRoomChange($(".room_change")[_i].id, $(".room_change")[_i].text)
       )
   updateFileUploadForm: (room_id) =>
-    $('#upload_room_id').val room_id
+    user_token = $('#current_user').attr 'user-token'
+    $('#file_iframe').attr('src', "http://files.hackchat.dev/uploader?room_id=#{room_id}&user_token=#{user_token}")
 
 $("#new_message").live "ajax:complete", (event, xhr, status) ->
   $("#message_content").val ""

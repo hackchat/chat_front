@@ -11,16 +11,7 @@
     .well.span8#chat
 
   .well.span2.file_upload
-    h3 Upload a file
-    br
-    form#file_upload*{multipart: true, remote: true}
-      = hidden_field_tag :user_token, current_user.user_token, id: 'upload_user_token'
-      = hidden_field_tag :room_id, '', id: 'upload_room_id'
-      = file_field_tag :file
-      br
-      a.btn.btn-info#upload_file
-        | Upload File
-
+    iframe#file_iframe*{src:'http://files.hackchat.dev/uploader', frameborder: 0}
   .well.span9#enter
     = simple_form_for(Message.new, remote: true) do |f|
       = f.input "content", :placeholder => "Enter Chat...", id: "chat_entry_box"
