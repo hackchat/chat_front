@@ -1,8 +1,7 @@
 jQuery ->
   $(".room_change").click (e) ->
     e.preventDefault()
-    room = new Room($(this).attr('id'), $(this).text())
-    room.handleRoomChange()
+    new Room($(this).attr('id'), $(this).text()).handleRoomChange()
   VIMMode()
 
 $("#new_message").live "ajax:complete", (event, xhr, status) ->
@@ -46,7 +45,6 @@ addRoomHotKeys =  (e) ->
       counter = 0
       for obj in objs
         if e.which == (49 + counter)
-          room = new Room(obj.id, obj.name)
-          room.handleRoomChange()
+          room = new Room(obj.id, obj.name).handleRoomChange()
         counter = counter + 1
 
