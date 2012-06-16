@@ -2,10 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#roomies {
-  height:50px;
-  margin-left:20px;
-}
+
 .roomie {
-  width:50px;
+  width:100px;
+  float:left;
+  height:30px;
+  margin-bottom:20px;
+}
+.roomie_name {
+  float:right;
+  width:65px;
+  line-height: 30px;
+}
+.roomie_avatar {
+  float:left;
+  padding-right:5px;
+  width:30px;
 }

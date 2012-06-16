@@ -1,16 +1,25 @@
 class RoomiesController < ApplicationController
 
+  def index
+    @roomies = Roomie.find_all_by_room_id(params[:room_id])
+  end
+
   def show
-    @roomies = Roomie.find_all_by_room_id(params[:id])
+    @roomie = Roomie.find(params[:id])
   end
 
   def create
-    roomie = Roomie.create(user_token: params[:user_token], room_id: params[:room_id])
+    roomie = Roomie.create(user_token: params[:user_token],
+                           room_id: params[:room_id],
+                           name: params[:name],
+                           avatar: params[:avatar]
+                          )
     render json: roomie.to_json
   end
 
   def destroy
-    Roomie.find_by_user_token_and_room_id(params[:user_token], params[:id])
+    roomie = Roomie.find_by_user_token(params[:id])
+    roomie.destroy if roomie
     render json: "DERP"
   end
 

@@ -2,9 +2,7 @@ class RoomsController < ApplicationController
   before_filter :require_login, only: [:index, :create]
 
   def index
-    @rooms = current_room_permissions.collect do |room_perm|
-               Room.find(room_perm.room_id)
-             end
+    @rooms = Room.find_rooms_for(session[:user_token])
   end
 
   def new
