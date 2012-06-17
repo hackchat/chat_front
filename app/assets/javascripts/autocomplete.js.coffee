@@ -11,11 +11,10 @@ $ ->
     if last_word.match /^@/
       if last_word.length > 1
         regex = new RegExp(last_word.replace('@',''))
-        matches = Roomies.filter (roomie) ->
+        
+        matches = Roomies.slice().filter (roomie) ->
           roomie.name.match(regex)
-        matches = matches.unique()
-        console.log matches
-        console.log matches.length
+        matches = matches.slice().unique()
         if matches.length == 1
           array = content.val().split(" ")
           array.pop()
