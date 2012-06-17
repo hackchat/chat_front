@@ -21,6 +21,7 @@
       = f.input "content", :placeholder => "Enter Chat...", id: "chat_entry_box"
       = f.select :language, PYGMENTS_LANGUAGES, selected: "Plain Text"
       = f.input "room_id", as: :hidden
+      = hidden_field_tag :broadcasts, ''
       br
       = f.submit "send", class: "btn btn-info"
       a.btn data-toggle="modal" href="#shortcut" style="float:right;" Shortcuts

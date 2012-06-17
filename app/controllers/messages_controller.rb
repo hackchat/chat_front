@@ -11,6 +11,7 @@ class MessagesController < ApplicationController
     params[:message][:avatar] = user.avatar
     params[:message][:name] = "#{user.first_name} #{user.last_name[0]}."
     @message = Message.create(params[:message])
+    @message.broadcasts(params[:broadcasts]) unless broadcasts.blank?
     render json: true, status: :created
   end
 

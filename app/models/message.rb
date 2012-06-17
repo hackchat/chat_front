@@ -1,6 +1,6 @@
 class Message < ActiveRecord::Base
   before_create :highlight
-  after_create :broadcast_creation
+  after_create :broadcast_creation, :scan_for_broadcasts
   attr_accessible :content, :room_id, :language, :user_token, :avatar, :name
 
   searchable do
@@ -19,6 +19,10 @@ class Message < ActiveRecord::Base
     Net::HTTP.post_form(uri, :message => message.to_json) if uri
   end
 
+  def broadcasts(token_string)
+    tokens = token_string.split(',')
+  end
+  
   def highlight
     unless self.language == "Plain Text"
       self.content = Pygments.highlight(self.content,

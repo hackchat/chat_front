@@ -176,3 +176,16 @@ body {
   margin-left:480px !important;
   margin-top: 35px !important;
 }
+
+#broadcast {
+  display:  fixed !important;
+  width:    200% !important;
+  height:   100px !important;
+  background-color: red !important;
+  p {
+    font-size: 24px !important;
+    font-weight: bold !important;
+    color: white !important;
+    font-family: serif !important;
+  }
+}
