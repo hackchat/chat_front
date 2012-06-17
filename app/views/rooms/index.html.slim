@@ -20,6 +20,7 @@
   .well.span9#enter
     = simple_form_for(Message.new, remote: true) do |f|
       = f.input "content", :placeholder => "Enter Chat...", id: "chat_entry_box"
+      = f.label :language
       = f.select :language, PYGMENTS_LANGUAGES, selected: "Plain Text"
       = f.input "room_id", as: :hidden
       = hidden_field_tag :broadcasts, ''
