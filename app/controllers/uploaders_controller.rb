@@ -2,7 +2,7 @@ class UploadersController < ApplicationController
   def show
     @room_id = params[:room_id]
     @user_token = params[:user_token]
-    @uploaded_files = Upload.find_all_by_user_token_and_room_id(@user_token, @room_id)
+    @uploaded_files = Upload.find_all_by_room_id(@room_id)
   end
 
   def create

@@ -6,7 +6,7 @@ form#file_upload*{multipart: true, enctype: "multipart/form-data"}
   = file_field_tag :file
   br
   br
-  a#upload_file
+  a.btn#upload_file
     | Upload
     br
-  a#uploaded_files = "#{@uploaded_files.try(:count)} files uploaded"
+  a.btn data-toggle="modal" href="#file_modal" = "#{@uploaded_files.try(:count)} Uploaded Files"

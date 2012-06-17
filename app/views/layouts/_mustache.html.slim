@@ -12,3 +12,8 @@ script#message_template type="text/html"
           | {{name}}
       .span5
         | {{{content}}}
+
+script#upload_template type='text/html'
+  .row.well.span4
+    a href="{{url}}" target="_blank"
+      | {{file_name}}

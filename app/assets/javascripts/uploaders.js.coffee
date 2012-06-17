@@ -5,16 +5,22 @@ BASE_URL = 'hackchat.dev'
 
 updateFiles = ->
   room_id = $('#current_room').html()
-  modal = $('#file-modal')
+  modal = $('#file_modal')
   file_count = 0
   files = []
   $.get('/uploader.json', room_id: room_id).success (data) ->
     file_count = data.file_count
     files = data.files
+
+  modal_body = modal.find('#files')
+  modal_body.children().remove()
   for file in files
-    modal.find('#files').append 
+    modal_body.append Mustache.to_html($('#upload_template').html(), file)
 
 $ ->
+  updateFiles()
+  $('.room_change').click updateFiles
+
   $('#upload_file').click ->
     form = $('#file_upload')[0]
     setHiddenFieldsForFileUpload(form)
@@ -30,6 +36,7 @@ $ ->
 
     jqxhr.success (data) ->
       $('#message_content').html "#{data.url}"
+      updateFiles()
 
 
   setHiddenFieldsForFileUpload = (form)->

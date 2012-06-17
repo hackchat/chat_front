@@ -1,0 +1,1 @@
+json.(upload, :file_name, :url)
