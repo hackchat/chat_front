@@ -1,5 +1,5 @@
 Array::func_index_of = (funq)->
-  for num in [0...this.length]
+  for num in [0...@length]
     if funq.call(this, this[num])
       return num
   -1

@@ -11,7 +11,6 @@ $ ->
     if last_word.match /^@/
       if last_word.length > 1
         regex = new RegExp(last_word.replace('@',''))
-        
         matches = Roomies.slice().filter (roomie) ->
           roomie.name.match(regex)
         matches = matches.slice().unique()
