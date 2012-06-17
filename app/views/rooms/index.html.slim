@@ -1,3 +1,4 @@
+#current_room.hide
 .row.span12#big_well
   .well#roomies
   .row
@@ -8,6 +9,9 @@
 
   .well.span9.chat_client
     h1#room_name
+    .pull-right
+      = render partial: 'searches/new'
+    br
     .well.span8#chat
 
   .well.span2.file_upload
@@ -33,5 +37,15 @@
     p (esc) to quit typing
     p (enter) to submit the chat
     p (shift + enter) to give a new line
+  .modal-footer
+    a.btn data-dismiss="modal" href="#" Close
+
+#search_results.modal.hide
+  .modal-header
+    button.close data-dismiss="modal" type="button"
+    h3 Search Results
+  .modal-body
+    h4#message
+    #results
   .modal-footer
     a.btn data-dismiss="modal" href="#" Close

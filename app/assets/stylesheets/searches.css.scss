@@ -1,0 +1,19 @@
+// Place all the styles related to the searches controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#new_search {
+  display: inline;
+
+  input {
+    height: 26px;
+  }
+}
+
+#submit_search {
+  margin-bottom: 8px;
+}
+
+#room_name {
+  display: inline;
+}

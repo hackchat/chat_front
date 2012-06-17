@@ -5,4 +5,5 @@ Hackchat::Application.routes.draw do
   end
   resources :roomies
   root to: "rooms#index"
+  resources :searches, only: [:create]
 end

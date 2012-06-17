@@ -3,6 +3,12 @@ class Message < ActiveRecord::Base
   after_create :broadcast_creation
   attr_accessible :content, :room_id, :language, :user_token, :avatar, :name
 
+  searchable do
+    text :content
+    string :user_token
+    integer :room_id
+  end
+
   def broadcast_creation
     message = {
            :channel => "/messages/#{self.room_id}",

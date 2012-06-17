@@ -4,6 +4,9 @@ gem 'rails', '3.2.3'
 gem 'redis'
 gem 'mysql2'
 gem 'squeel'
+gem 'sunspot_rails'
+
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -26,6 +29,7 @@ group :development, :test do
   gem 'launchy'
   gem 'debugger'
   gem 'newrelic_rpm'
+  gem 'sunspot_solr'
 end
 
 gem 'pygments.rb'

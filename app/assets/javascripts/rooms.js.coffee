@@ -1,8 +1,9 @@
 jQuery ->
   $(".room_change").click (e) ->
     e.preventDefault()
-    new Room($(this).attr('id'), $(this).text()).handleRoomChange()
-  VIMMode()
+    $('#current_room').html $(this).attr('id')
+    new Room($('#current_room').html(), $(this).text()).handleRoomChange()
+  #VIMMode()
 
 $("#new_message").live "ajax:complete", (event, xhr, status) ->
   $("#message_content").val ""
@@ -11,7 +12,7 @@ $("#new_message").live "ajax:complete", (event, xhr, status) ->
 jQuery ->
   first_room = $(".room_change").first()
   if first_room.length
-    # $(".room_change").first().click()
+    $(".room_change").first().click()
   else
     $(".chat_client").html("<h1>Hey Big Tuna, get some friends to chat with.</h1>")
     $("#enter").html("").hide()
@@ -19,7 +20,6 @@ jQuery ->
 
 $(window).bind "beforeunload", ->
     new Roomie({ user_token: $('#current_user').attr("user-token") }).unsubscribe()
-    alert "OVERRIDE DEFAULT MESSAGE"
 
 VIMMode =  ->
   if $("#chat").length

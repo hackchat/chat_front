@@ -1,0 +1,5 @@
+form#new_search*{remote: true}
+  = text_field_tag :content, '', placeholder: "Search messages..."
+  = hidden_field_tag :room_id, ''
+  = hidden_field_tag :user_token, ''
+a.btn#submit_search data-toggle="modal" href="#search_results" Search
