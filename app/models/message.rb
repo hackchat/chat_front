@@ -1,6 +1,6 @@
 class Message < ActiveRecord::Base
   before_create :highlight
-  after_create :broadcast_creation, :scan_for_broadcasts
+  after_create :broadcast_creation
   attr_accessible :content, :room_id, :language, :user_token, :avatar, :name
 
   searchable do
