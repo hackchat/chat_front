@@ -19,7 +19,7 @@ class Room < ActiveRecord::Base
 
   def self.find_rooms_for(user)
     room_permissions = user_room_permissions(user).map(&:room_id)
-    Room.where{id.in(room_permissions)}
+    Room.where(id: room_permissions)
   end
 
   def self.user_room_permissions(user)
