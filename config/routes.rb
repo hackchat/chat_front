@@ -1,4 +1,5 @@
 Hackchat::Application.routes.draw do
+  resource :uploader
   resources :messages
   resources :rooms do
     resources :permissions

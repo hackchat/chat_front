@@ -10,7 +10,7 @@ class RoomsController < ApplicationController
   end
 
   def edit
-    # Subtract individuals to a room
+    # Subtract Individuals from a room
   end
 
   def create

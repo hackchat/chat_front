@@ -5,13 +5,13 @@
 $ ->
   $('#submit_search').click ->
     form = $('#new_search')
-    setHiddenFieldsForForm(form)
+    setHiddenFieldsFor(form)
     data = form.serialize()
     jqxhr = $.post('/searches', data)
     displaySearchResults(jqxhr)  
 
 
-  setHiddenFieldsForForm = (form)->
+  setHiddenFieldsFor = (form)->
     $(form).find('#room_id').val $('#current_room').html()
     $(form).find('#user_token').val $('#current_user').attr('user-token')
 
