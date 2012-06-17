@@ -81,11 +81,7 @@ body {
 }
 
 .chat_well{
-  background: #3c89c9; /* Old browsers */
-  background: -moz-linear-gradient(top, #3c89c9 0%, #85aded 50%, #3f8ac6 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3c89c9), color-stop(50%,#85aded), color-stop(100%,#3f8ac6)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #3c89c9 0%,#85aded 50%,#3f8ac6 100%); /* Chrome10+,Safari5.1+ */
-  background: linear-gradient(top, #3c89c9 0%,#85aded 50%,#3f8ac6 100%); /* W3C */
+  background-color: #fdf6e3;
   opacity: .95;
   padding: -20px;
   margin-left: -25px;
@@ -150,7 +146,7 @@ body {
 
 
 #navbar-container{
-  background-color: #8FED85 !important;
+  background-color: $base01 !important;
 }
 
 #room_name{
@@ -163,7 +159,7 @@ body {
 
 .room_change{
   font-size: 20px;
-  color: #FFFF66 !important;
+  color: $base02 !important;
   font-weight: bold !important;
   margin-left: 5px;
 }
