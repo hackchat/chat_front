@@ -1,7 +1,10 @@
 .well.span3.create_room
+  = flash[:notice]
   h1 Add by email
   br
   = form_tag(room_permissions_path(params[:room_id]), :method => "post") do
-    = text_field_tag :email, class: "import-forms"
+    = text_field_tag :email, '', class: "import-forms"
     br
     = submit_tag
+  br
+  = link_to "Back to list of members", room_permissions_path(params[:room_id])
