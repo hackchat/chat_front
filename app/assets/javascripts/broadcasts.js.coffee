@@ -3,7 +3,8 @@ Array::func_index_of = (funq)->
     if funq.call(this, this[num])
       return num
   -1
-$ ->
+
+getBroadcastsFromMessages = ->
   $('#new_message').submit ->
     content = $(this).find('#message_content').val()
     tokens = []
@@ -18,3 +19,8 @@ $ ->
       tokens.unique
     $(this).find('#broadcasts').val tokens.join(',')
     true #this should never stop form from submitting
+
+$ ->
+  getBroadcastsFromMessages()
+  room_id = $('#current_room').val() 
+  new Subscribe("/broadcasts/#{room_id}", Broadcast)
