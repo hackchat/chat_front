@@ -21,6 +21,5 @@ getBroadcastsFromMessages = ->
     true #this should never stop form from submitting
 
 $ ->
+  $('#broadcast').hide()
   getBroadcastsFromMessages()
-  room_id = $('#current_room').val() 
-  new Subscribe("/broadcasts/#{room_id}", Broadcast)
