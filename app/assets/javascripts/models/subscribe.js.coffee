@@ -1,17 +1,16 @@
 class Subscribe
 
-  @subscribeFaye: (channel) ->
+  @subscribeFaye: (channel, Type) ->
     @faye.subscribe channel, (data) ->
-                    message = new Message(data)
-                    message.renderMessage()
+                    new Type(data).render()
 
   @unsubscribeFaye: ->
     @sub.callback =>
       @sub.cancel()
 
-  @handleSubscription: (channel) ->
+  @handleSubscription: (channel, Type) ->
     @faye or= new Faye.Client(FAYE_DOMAIN)
     Subscribe.unsubscribeFaye() if @sub
-    @sub = Subscribe.subscribeFaye(channel)
+    @sub = Subscribe.subscribeFaye(channel, Type)
 
 window.Subscribe = Subscribe

@@ -7,7 +7,7 @@ class Message
     @room_id = message.room_id
     @time_stamp = message.time_stamp
 
-  renderMessage: =>
+  render: =>
     $('#chat').append Mustache.to_html($('#message_template').html(), this)
     $("#chat").scrollTop(11000)
 
@@ -17,8 +17,7 @@ class Message
   @renderMessages: (messages) ->
     $("#chat").html("<img src='/ajax-loader.gif' class='pac-man-messages'>")
     for message in messages
-      msg = new Message(message)
-      msg.renderMessage()
+      new Message(message).render()
     $('.pac-man-messages').remove() if $('.pac-man-messages')
 
 window.Message = Message

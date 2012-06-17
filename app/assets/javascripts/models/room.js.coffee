@@ -15,7 +15,7 @@ class Room
   handleRoomChange:  =>
     @changeRoomName()
     Roomie.handleRoomie(@room_id, @user)
-    Subscribe.handleSubscription("/messages/#{@room_id}")
+    Subscribe.handleSubscription("/messages/#{@room_id}", Message)
     Message.getMessages(@room_id)
     $("#message_room_id").val(@room_id)
 
