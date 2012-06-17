@@ -1,3 +1,4 @@
+window.Roomies = []
 class Roomie
 
   constructor: (params) ->
@@ -7,6 +8,7 @@ class Roomie
     @user_token   = params.user_token
     @status       = params.status
     $.ajaxSetup( { async:false } )
+    Roomies.push this
 
   render: =>
     if @status == "CREATED"
