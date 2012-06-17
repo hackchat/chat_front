@@ -3,4 +3,5 @@ json.array!(@roomies) do |json, roomie|
   json.avatar roomie.avatar
   json.room_id roomie.room_id
   json.user_token roomie.user_token
+  json.status roomie.status
 end

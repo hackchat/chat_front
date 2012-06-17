@@ -1,16 +1,20 @@
 class Roomie
 
   constructor: (params) ->
-    @room_id = params.room_id
-    @avatar = params.avatar
-    @name = params.name
-    @user_token = params.user_token
+    @room_id      = params.room_id
+    @avatar       = params.avatar
+    @name         = params.name
+    @user_token   = params.user_token
+    @status       = params.status
     $.ajaxSetup( { async:false } )
 
-  renderRoomie: =>
-    unless $("##{@user_token}").attr("id")
+  render: =>
+    if @status == "CREATED"
       $("#roomies").append Mustache.to_html($('#roomie_template').html(), this)
-    $('.pac-man-roomies').remove() if $('.pac-man-roomies')
+    else
+      $("##{@user_token}").remove()
+
+    $('.pac-man-roomies').remove()
 
   subscribe:  =>
     $.post "/roomies", {
@@ -20,10 +24,10 @@ class Roomie
                           avatar: @avatar,
                         }
 
-  unsubscribe: (user_token) =>
+  unsubscribe: =>
     $.ajax({
       type: "DELETE",
-      url: "/roomies/#{user_token}",
+      url: "/roomies/#{@user_token}",
       })
 
   @fetch: (room_id) ->
@@ -31,16 +35,14 @@ class Roomie
 
   @renderRoomies: (objs) =>
     for obj in objs
-      roomie = new Roomie(obj)
-      roomie.renderRoomie()
+      roomie = new Roomie(obj).render()
 
   @handleRoomie: (room_id, user) ->
-    clearInterval(@roomieChecker) if @roomieChecker
     $("#roomies").html("<img src='/ajax-loader.gif' class='pac-man-roomies'>")
-    roomie = new Roomie({ room_id: room_id, avatar: user.avatar, name: user.name, user_token: user.user_token })
-    roomie.unsubscribe(user.user_token)
+    roomie = new Roomie({ room_id: room_id, avatar: user.avatar, name: user.name, user_token: user.user_token, status: "CREATED" })
+    roomie.unsubscribe()
     roomie.subscribe()
+    Subscribe.handleSubscription("/roomies/#{room_id}", Roomie)
     Roomie.fetch(room_id)
-    @roomieChecker = setInterval("Roomie.fetch(#{room_id})",10000)
 
 window.Roomie = Roomie

@@ -1,29 +1,25 @@
 jQuery ->
   $(".room_change").click (e) ->
     e.preventDefault()
-    room = new Room($(this).attr('id'), $(this).text())
-    room.handleRoomChange()
+    new Room($(this).attr('id'), $(this).text()).handleRoomChange()
   VIMMode()
 
 $("#new_message").live "ajax:complete", (event, xhr, status) ->
   $("#message_content").val ""
   $("#message_language").val("Plain Text")
 
-$(window).load ->
+jQuery ->
   first_room = $(".room_change").first()
   if first_room.length
-    $(".room_change").first().click()
+    # $(".room_change").first().click()
   else
     $(".chat_client").html("<h1>Hey Big Tuna, get some friends to chat with.</h1>")
     $("#enter").html("").hide()
     $(".file_upload").html("").hide()
 
-# (window).bind 'beforeunload' ->
-#   roomie = new Roomie({ room_id: $("#message_room_id").val(), user_token: $('#current_user').attr("user-token") })
-#   roomie.unsubscribe($('#current_user').attr("user-token"))
-
-# window.onbeforeunload
-# async is false
+$(window).bind "beforeunload", ->
+    new Roomie({ user_token: $('#current_user').attr("user-token") }).unsubscribe()
+    alert "OVERRIDE DEFAULT MESSAGE"
 
 VIMMode =  ->
   if $("#chat").length
@@ -46,7 +42,6 @@ addRoomHotKeys =  (e) ->
       counter = 0
       for obj in objs
         if e.which == (49 + counter)
-          room = new Room(obj.id, obj.name)
-          room.handleRoomChange()
+          room = new Room(obj.id, obj.name).handleRoomChange()
         counter = counter + 1
 

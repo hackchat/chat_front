@@ -16,7 +16,7 @@ class Room
   handleRoomChange:  =>
     @changeRoomName()
     Roomie.handleRoomie(@room_id, @user)
-    Subscribe.handleSubscription("/messages/#{@room_id}")
+    Subscribe.handleSubscription("/messages/#{@room_id}", Message)
     Message.getMessages(@room_id)
     $("#message_room_id").val(@room_id)
     $('#file_iframe').attr('src', "http://files.hackchat.dev/uploader?room_id=#{@room_id}&user_token=#{@user.user_token}")
