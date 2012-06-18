@@ -13,12 +13,12 @@ jQuery ->
   # $(".file_upload").html("").hide()
 
 $("#new_message").live "ajax:complete", (event, xhr, status) ->
-  console.log "HERE"
   $("#message_content").val ""
   $("#message_language").val("Plain Text")
 
-$(window).bind "beforeunload", ->
+window.onbeforeunload = (e) ->
     new Roomie({ user_token: $('#current_user').attr("user-token") }).unsubscribe()
+    e.preventDefault()
 
 VIMMode =  ->
   if $("#chat").length
