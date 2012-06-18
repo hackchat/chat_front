@@ -1,12 +1,15 @@
-.well.span3.create_room 
+.well.span3.create_room
   h1 Member List
   br
-  - @users.each do |user|
-    | #{user.first_name} #{user.last_name}  
-    = link_to "Remove", "#{PERMISSIONS_URL}user_room_permission?room_id=#{params["room_id"]}&user_token=#{user.user_token}", method: :delete
-    br
-  br  
-  = link_to "Add users", new_room_permission_path
+  h3
+    - @users.each do |user|
+      | #{user.first_name} #{user.last_name}
+      btn.btn-danger.btn-small
+        = link_to "Remove", "#{PERMISSIONS_URL}user_room_permission?room_id=#{params["room_id"]}&user_token=#{user.user_token}", method: :delete
+      br
+  br
+  .btn.btn-success
+    = link_to "Add users", new_room_permission_path
   br
   br
   = link_to "Back to chat", root_path
