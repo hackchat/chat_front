@@ -29,8 +29,8 @@ group :development, :test do
   gem 'launchy'
   gem 'debugger'
   gem 'newrelic_rpm'
-  gem 'sunspot_solr'
 end
+gem 'sunspot_solr'
 
 gem 'pygments.rb'
 
