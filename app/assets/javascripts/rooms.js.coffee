@@ -5,12 +5,13 @@ jQuery ->
     room_id = $('#current_room').html()
     new Room(room_id, $(this).text()).handleRoomChange()
     BroadcastSubscribe.handleSubscription("/broadcasts/#{room_id}", Broadcast)
-  #VIMMode()
+  VIMMode()
   first_room = $(".room_change").first()
   if first_room.length
     $(".room_change").first().click()
   else
-    $(".chat_client").html("<h1>Hey Big Tuna, get some friends to chat with.</h1>")
+    $(".chat_client").html("<h1>Hey Big Tuna,
+                                get some friends to chat with.</h1>")
     $("#enter").html("").hide()
     $(".file_upload").html("").hide()
 
