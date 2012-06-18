@@ -1,12 +1,13 @@
 h3 Upload File
-
+br
 form#file_upload*{multipart: true, enctype: "multipart/form-data"}
   = hidden_field_tag :file_user_token, ''
   = hidden_field_tag :file_room_id, ''
   = file_field_tag :file
   br
   br
-  a.btn#upload_file
+  a.btn.btn-info#upload_file
     | Upload
-    br
-  a.btn data-toggle="modal" href="#file_modal" = "#{@uploaded_files.try(:count)} Uploaded Files"
+  br
+  br
+  a.btn.btn-info data-toggle="modal" href="#file_modal" = "#{@uploaded_files.try(:count)} Uploaded Files"
