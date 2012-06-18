@@ -6,7 +6,11 @@
   .well.span2#chats_list
     h2 Rooms
     - @rooms.each do |room|
-      .room_name_well= link_to room.name, nil, class: "room_change", id: "#{room.id}"
+      .room_name_well
+        = link_to room.name, nil, class: "room_change", id: "#{room.id}"
+        br
+        - if room.owned_by?(current_user.user_token)
+          = link_to "Manage users", room_permissions_path(room_id: "#{room.id}")
 
   .well.span9.chat_client
     h1#room_name
