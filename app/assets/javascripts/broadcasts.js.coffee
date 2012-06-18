@@ -8,9 +8,11 @@ getBroadcastsFromMessages = ->
   $('#new_message').submit ->
     content = $(this).find('#message_content').val()
     tokens = []
-    if content.match /@/
+    if content.match(/@/)
       broadcastedNames = content.match(/@\w+ \w\./g)
+      console.log broadcastedNames
       for name in broadcastedNames
+        console.log name
         name.replace('@', '')
         roomies = window.Roomies.slice()
         index_of_name = roomies.func_index_of (roomie) ->
@@ -22,4 +24,4 @@ getBroadcastsFromMessages = ->
 
 $ ->
   $('#broadcast').hide()
-  getBroadcastsFromMessages()
+  # getBroadcastsFromMessages()
