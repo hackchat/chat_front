@@ -44,7 +44,24 @@ class Roomie
     roomie = new Roomie({ room_id: room_id, avatar: user.avatar, name: user.name, user_token: user.user_token, status: "CREATED" })
     roomie.unsubscribe()
     roomie.subscribe()
-    Subscribe.handleSubscription("/roomies/#{room_id}", Roomie)
+    RoomieSubscribe.handleSubscription("/roomies/#{room_id}", Roomie)
     Roomie.fetch(room_id)
 
 window.Roomie = Roomie
+
+class RoomieSubscribe
+
+  @subscribeFaye: (channel, Type) ->
+    @faye.subscribe channel, (data) ->
+                    new Type(data).render()
+
+  @unsubscribeFaye: ->
+    @rsub.callback =>
+      @rsub.cancel()
+
+  @handleSubscription: (channel, Type) ->
+    @faye or= new Faye.Client(FAYE_DOMAIN)
+    RoomieSubscribe.unsubscribeFaye() if @rsub
+    @rsub = RoomieSubscribe.subscribeFaye(channel, Type)
+
+window.RoomieSubscribe = RoomieSubscribe

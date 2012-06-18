@@ -7,15 +7,13 @@ jQuery ->
     BroadcastSubscribe.handleSubscription("/broadcasts/#{room_id}", Broadcast)
   VIMMode()
   first_room = $(".room_change").first()
-  if first_room.length
-    $(".room_change").first().click()
-  else
-    $(".chat_client").html("<h1>Hey Big Tuna,
-                                get some friends to chat with.</h1>")
-    $("#enter").html("").hide()
-    $(".file_upload").html("").hide()
+  # $(".chat_client").html("<h1>Hey Big Tuna,
+  #                             get some friends to chat with.</h1>")
+  # $("#enter").html("").hide()
+  # $(".file_upload").html("").hide()
 
 $("#new_message").live "ajax:complete", (event, xhr, status) ->
+  console.log "HERE"
   $("#message_content").val ""
   $("#message_language").val("Plain Text")
 

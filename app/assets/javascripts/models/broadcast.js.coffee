@@ -2,10 +2,8 @@ class Broadcast
   constructor: (broadcast_tokens) ->
     @broadcast_tokens = broadcast_tokens
     @client_user_token = $('#current_user').attr('user-token')
-    
+
   render: =>
-    console.log @broadcast_tokens
-    console.log @client_user_token
     unless @broadcast_tokens.indexOf(@client_user_token) == -1
       $('#broadcast').html("You have a new message!")
       $('#broadcast').show().slideUp(2000)
