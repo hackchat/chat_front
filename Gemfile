@@ -20,6 +20,7 @@ end
 gem 'rb-readline'
 gem "slim-rails"
 gem 'slim'
+
 group :development, :test do
   gem 'quiet_assets'
   gem 'rspec-rails'
